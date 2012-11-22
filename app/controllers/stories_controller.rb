@@ -1,0 +1,43 @@
+class StoriesController < ApplicationController
+  def index
+    @stories = Story.paginate(page: params[:page])
+  end 
+  
+	def show
+		@story = Story.find(params[:id])
+	end
+	
+	def edit
+		@story = Story.find(params[:id])
+  end
+	
+	def new
+		@story = Story.new
+  end
+	
+	def create
+    @story = Story.new(params[:story])
+    if @story.save
+			flash[:success] = "Story created!"
+      redirect_to @story
+    else
+      render 'new'
+    end
+  end
+	
+	def update
+		@story = Story.find(params[:id])
+    if @story.update_attributes(params[:story])
+			flash[:success] = "Story updated"
+      redirect_to @story
+    else
+      render 'edit'
+    end
+  end
+	 
+	def destroy
+    Story.find(params[:id]).destroy
+    flash[:success] = "Story destroyed."
+    redirect_to stories_url
+  end
+end
