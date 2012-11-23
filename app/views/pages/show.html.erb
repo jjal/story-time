@@ -6,9 +6,16 @@
         <%= @page.title %>
       </h1>
     </section>
-    <%= @page.description %>
+    <section>
+    <%= @page.text %>
+    </section>
+    <section class="link_section">
+    <ul>
+    <%= render @page.links %>
+    </ul>
+    </section>
   </aside>
 </div>
 
-<%= link_to 'Edit', edit_page_path(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to "Edit", edit_story_page_path(@story,@page) %> |
+<%= link_to "Back", story_pages_path(@story) %>

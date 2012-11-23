@@ -1,4 +1,5 @@
 <li>
 <div class="story_title"><%= story.title %></div>
 <div class="story_desc"><%= story.description %></div>
+<div class="story_button"><%= button_to "Edit", edit_story_path(story), method: :get %>
 </li>

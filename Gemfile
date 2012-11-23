@@ -8,6 +8,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip'
 gem 'aws-s3'
+gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

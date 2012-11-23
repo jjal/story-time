@@ -1,4 +1,4 @@
 <li>
-<div class="story_title"><%= story.title %></div>
-<div class="story_desc"><%= story.description %></div>
+<div class="page_title"><%= page.title %></div>
+<div class="pull_right"><%= button_to "Edit", edit_story_page_path(@story, page), method: :get, class: "btn btn-small" %>
 </li>

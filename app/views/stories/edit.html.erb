@@ -9,3 +9,7 @@
     <% end %>
   </div>
 </div>
+<div class="row">
+  <%= render @story.pages %>
+  <%= button_to "Add page", new_story_page_path(@story), method: :get, class: "btn btn-large btn-primary" %>
+</div>

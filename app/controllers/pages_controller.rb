@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def index
     @story = Story.find(params[:story_id])
-    @pages = story.pages.paginate(page: params[:page])
+    @pages = @story.pages.paginate(page: params[:page])
   end 
   
 	def show
@@ -24,25 +24,27 @@ class PagesController < ApplicationController
 		@page = @story.pages.build(params[:page])
     if @page.save
 			flash[:success] = "Page created!"
-      redirect_to @page
+      redirect_to edit_story_path(@story)
     else
       render 'new'
     end
   end
 	
 	def update
+    @story = Story.find(params[:story_id])
 		@page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
 			flash[:success] = "Page updated"
-      redirect_to @page
+      redirect_to [@story,@page]
     else
       render 'edit'
     end
   end
 	 
 	def destroy
+    @story = Story.find(params[:story_id])
     Page.find(params[:id]).destroy
     flash[:success] = "Page destroyed."
-    redirect_to pages_url
+    redirect_to story_pages_url(@story)
   end
 end
