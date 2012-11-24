@@ -4,7 +4,7 @@
 <%= f.text_field :title %>
 
 <%= f.label :image %>
-<%= image_tag @page.image? ? @page.image.url(:medium) : "placeholder" %>
+<%= image_tag @page.image? ? @page.image.url(:medium) : "placeholder.png" %>
 <%= f.file_field :image %>
 
 <%= f.label :text %>

@@ -22,7 +22,7 @@ class StoriesController < ApplicationController
     @story = current_user.stories.build(params[:story])
     if @story.save
 			flash[:success] = "Story created!"
-      redirect_to @story
+      redirect_to stories_url
     else
       render 'new'
     end
