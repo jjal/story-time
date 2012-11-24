@@ -1,0 +1,18 @@
+<%= nested_form_for([@story, @page]) do |f| %>
+  <%= render "fields", f: f %>
+  <div class="well" style="margin-bottom: 20px">
+  <h3>Links</h3>
+  <%= f.fields_for :links do |links_form| %>
+      <div class="control-group controls form-inline link-row">
+      <section>
+        <%=  links_form.text_field :text, class: "input-medium", placeholder: "Link Text" %>
+        <%=  links_form.label :other_page_id, class: "control-label" %>
+        <%=  links_form.select :other_page_id, @story.pages.collect {|p| [ p.title, p.id ] }, {:include_blank => false}, class: "input-medium" %>
+        <%=  links_form.link_to_remove "Remove", class: "btn btn-small btn-danger" %>
+        </section>
+      </div>
+    <% end %>
+   <%= f.link_to_add "Add a link", :links, class: "btn btn-small btn-info" %>
+   </div>
+  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+<% end %>

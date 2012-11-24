@@ -1,4 +1,6 @@
-<li>
-<div class="page_title"><%= page.title %></div>
-<div class="pull_right"><%= button_to "Edit", edit_story_page_path(@story, page), method: :get, class: "btn btn-small" %>
+<li><div class="form-inline">
+  <div class="page_title pull_left controls"><%= page.title %></div>
+  <%= button_to "Edit", edit_story_page_path(@story, page), method: :get, class: "btn btn-small" %>
+  <%= button_to "Remove", story_page_path(@story, page), method: :delete, class: "btn btn-small btn-danger" %>
+</div>
 </li>

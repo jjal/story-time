@@ -1,6 +1,7 @@
 class Story < ActiveRecord::Base
   attr_accessible :id, :image, :title, :user_id, :description, :image_file_name, :image_content_type, :image_file_size, :image_updated_at
   has_many :pages
+  belongs_to :user
   # has_attached_file :image,
     # :styles => {
       # :thumb  => "100x100",

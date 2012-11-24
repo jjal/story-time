@@ -17,5 +17,6 @@
   </aside>
 </div>
 
-<%= link_to "Edit", edit_story_page_path(@story,@page) %> |
-<%= link_to "Back", story_pages_path(@story) %>
+<% if (user_can_edit(@story)) %>
+  <%= button_to "Edit", edit_story_page_path(@story,@page), class: "btn btn-medium btn-warning" %>
+<% end %>

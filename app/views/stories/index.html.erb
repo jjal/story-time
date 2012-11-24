@@ -1,4 +1,4 @@
 <ul>
 <%= render @stories %>
 </ul>
-<%= link_to "Add a story", new_story_path %>
+<%= button_to "Add a story", new_story_path, method: :get, class: "btn btn-large btn-primary" %>

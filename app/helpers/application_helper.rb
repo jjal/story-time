@@ -1,7 +1,7 @@
 module ApplicationHelper
 
 	def full_title(page_title)
-		base_title = "KinyeiPOS"
+		base_title = "Story Time"
 		
 		page_title.empty? ? base_title : "#{base_title} | #{page_title}"
 	end

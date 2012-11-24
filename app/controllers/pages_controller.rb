@@ -35,7 +35,7 @@ class PagesController < ApplicationController
 		@page = Page.find(params[:id])
     if @page.update_attributes(params[:page])
 			flash[:success] = "Page updated"
-      redirect_to [@story,@page]
+      redirect_to edit_story_path(@story)
     else
       render 'edit'
     end

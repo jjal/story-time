@@ -2,18 +2,7 @@
 <h1>Update Page</h1>
 
 <div class="row">
-  <div class="span6 offset3">
-    <%= nested_form_for([@story, @page]) do |f| %>
-      <%= render "fields", f: f %>
-      <%= f.fields_for :links do |links_form| %>
-            <%=  links_form.label :text %> <br/>
-            <%=  links_form.text_field :text %> <br/>
-            <%=  links_form.label :other_page_id %> <br/>
-            <%=  links_form.select :other_page_id, @story.pages.collect {|p| [ p.title, p.id ] }, {:include_blank => false} %> <br/>
-            <%=  links_form.link_to_remove "Remove this link" %>
-        <% end %>
-       <%= f.link_to_add "Add a link", :links %>
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+  <div class="span8 offset2">
+    <%= render "form" %>
   </div>
 </div>
