@@ -17,6 +17,12 @@
     </section>
   </aside>
 </div>
+<% if(@page.end?) %>
+<h1>The End</h1>
+<% end
+if(@page.success?) %>
+<h1>You're amazing.</h1>
+<% end %>
 
 <% if (user_can_edit(@story)) %>
   <%= link_to "Edit", edit_story_page_path(@story,@page), class: "btn btn-medium btn-warning" %>
