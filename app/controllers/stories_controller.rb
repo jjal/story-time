@@ -32,10 +32,8 @@ class StoriesController < ApplicationController
 		@story = Story.find(params[:id])
     if @story.update_attributes(params[:story])
 			flash[:success] = "Story updated"
-      redirect_to @story
-    else
-      render 'edit'
     end
+    render 'edit'
   end
 	 
 	def destroy

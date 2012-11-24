@@ -7,6 +7,7 @@ gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip'
+gem "paperclip-dropbox"
 gem 'aws-s3'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 

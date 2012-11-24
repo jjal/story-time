@@ -3,8 +3,13 @@
 <%= f.label :title %>
 <%= f.text_field :title %>
 
+<%= f.label :image %>
+<%= image_tag @page.image? ? @page.image.url(:medium) : "placeholder" %>
+<%= f.file_field :image %>
+
 <%= f.label :text %>
 <%= f.text_area :text %>
+
 <div class="form-inline">
 <%= f.check_box :success %>
 <%= f.label :success %>

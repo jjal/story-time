@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122135958) do
+ActiveRecord::Schema.define(:version => 20121124185512) do
 
   create_table "games", :force => true do |t|
     t.integer  "user_id"
@@ -44,14 +44,17 @@ ActiveRecord::Schema.define(:version => 20121122135958) do
 
   create_table "pages", :force => true do |t|
     t.integer  "story_id"
-    t.string   "image"
     t.string   "title"
     t.string   "text"
     t.boolean  "end"
     t.boolean  "success"
     t.integer  "points"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "relationships", :force => true do |t|
@@ -66,12 +69,12 @@ ActiveRecord::Schema.define(:version => 20121122135958) do
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "stories", :force => true do |t|
-    t.string   "image"
     t.string   "title"
     t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "description"
+    t.string   "image"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
