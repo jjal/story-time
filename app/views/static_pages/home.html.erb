@@ -15,15 +15,14 @@
   </div>  
 <% else %>
   <div class="center hero-unit">
-    <h1>Welcome to the Story Time</h1>
+    <h1>Welcome to Story Time</h1>
 
     <h2>
       
     </h2>
 
-    <%= link_to "Sign up now!", signup_path, 
+    <%= link_to "Create a profile", signup_path, 
                                 class: "btn btn-large btn-primary" %>
   </div>
 
-  <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
 <% end %>
