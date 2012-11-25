@@ -45,6 +45,6 @@ class PagesController < ApplicationController
     @story = Story.find(params[:story_id])
     Page.find(params[:id]).destroy
     flash[:success] = "Page destroyed."
-    redirect_to story_pages_url(@story)
+    redirect_to edit_story_path(@story)
   end
 end

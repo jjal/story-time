@@ -1,11 +1,13 @@
 <% provide(:title, @page.title) %>
+<section>
+    <h1><%= @story.title %></h1>
+      <h2>
+        <%= @page.title %>
+      </h2>
+    </section>
+    
 <div class="row">
   <aside class="span4">
-    <section>
-      <h1>
-        <%= @page.title %>
-      </h1>
-    </section>
     <section>
     <%= image_tag @page.image? ? @page.image.url(:large) : "placeholder.png" %>
     <%= @page.text %>
@@ -18,7 +20,8 @@
   </aside>
 </div>
 <% if(@page.end?) %>
-<h1>The End</h1>
+  <h1>The End</h1>
+  <h3><%= link_to "Begin again", story_path(@story) %></h3>
 <% end
 if(@page.success?) %>
 <h1>You're amazing.</h1>
