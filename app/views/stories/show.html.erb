@@ -6,9 +6,11 @@
         <%= @story.title %>
       </h1>
     </section>
-    <% if @story.image? %>
-      <%= image_tag @story.image.url(:large) %>
-    <% end %>
+    <div>
+      <% if @story.image? %>
+        <%= image_tag @story.image.url(:large) %>
+      <% end %>
+    </div>
     <%= @story.description %>
   
 </div>
