@@ -9,7 +9,9 @@
 <div class="row">
   <aside class="span4">
     <section>
-    <%= image_tag @page.image? ? @page.image.url(:large) : "placeholder.png" %>
+    <% if @page.image? %>
+      <%= image_tag @page.image.url(:large) %>
+    <% end %>
     <%= @page.text %>
     </section>
     <section class="link_section">

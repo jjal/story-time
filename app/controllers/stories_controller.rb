@@ -7,7 +7,6 @@ class StoriesController < ApplicationController
   
 	def show
 		@story = Story.find(params[:id])
-    redirect_to [@story, @story.pages.find(:first)]
 	end
 	
 	def edit
