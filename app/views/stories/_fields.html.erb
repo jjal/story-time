@@ -7,7 +7,7 @@
 <%= f.text_field :description %>
 
 <%= f.label :image %>
-<% if @pagem.image? %>
-      <%= image_tag @page.image.url(:medium) %>
+<% if @story.image? %>
+      <%= image_tag @story.image.url(:medium) %>
     <% end %>
 <%= f.file_field :image %>
