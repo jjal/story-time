@@ -1,4 +1,5 @@
 class StoriesController < ApplicationController
+  before_filter :signed_in_user, only: [:index, :edit, :update]
   before_filter :correct_user,   only: [:destroy, :edit, :update]
   
   def index
@@ -36,7 +37,8 @@ class StoriesController < ApplicationController
   end
 	 
 	def destroy
-    Story.find(params[:id]).destroy
+    @story = Story.find(params[:id])
+    @story.destroy
     flash[:success] = "Story destroyed."
     redirect_to stories_url
   end
@@ -45,7 +47,9 @@ class StoriesController < ApplicationController
 
     def correct_user
       @story = current_user.stories.find_by_id(params[:id])
-      flash[:error] = "You need to be the owner of that story to modify it."
-      redirect_to root_url if @story.nil?
+      if(@story.nil? and !current_user.admin?)
+        flash[:error] = "You need to be the owner of that story to modify it."
+        redirect_to root_url if @story.nil?
+      end
     end
 end

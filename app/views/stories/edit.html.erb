@@ -7,7 +7,7 @@
       <%= render "fields", f: f %>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %>
-    <div class="well">
+    <div class="">
     <h3>Pages</h3>
     <ul class="thumbnails">
       <%= render @story.pages.find(:all, order: "id") %>

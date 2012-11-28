@@ -1,23 +1,21 @@
 <% provide(:title, @story.title) %>
-<div class="row">
-  
-    <section>
-      <h1>
-        <%= @story.title %>
-      </h1>
-    </section>
-    <div>
-      <% if @story.image? %>
-        <%= image_tag @story.image.url(:large) %>
-      <% end %>
-    </div>
-    <%= @story.description %>
-  
-</div>
 <section>
-  <div class="row" style="margin-top:20px">
-    <div class="span2 offset6">
-      <%= link_to "Begin story", story_page_path(@story,@story.pages.find(:first, order: "id")), class:"btn btn-large btn-primary" %>
-    </div>
-  </div>
+  <h1><%= @story.title %></h1>
 </section>
+    
+<div class="row">
+  <div class="span6 offset3">
+    <section style="text-align:center; margin-bottom:20px">
+    <% if @story.image? %>
+      <%= image_tag @story.image.url(:large) %>
+    <% end %>
+    </section>
+    <p>
+      <%= @story.description %>
+    </p>  
+ 
+  <div style="text-align:center">
+        <%= link_to "Begin story", story_page_path(@story,@story.pages.find(:first, order: "id")), class:"btn btn-large btn-primary" %>
+  </div>
+   </div>
+</div>

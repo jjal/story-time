@@ -7,28 +7,34 @@
     </section>
     
 <div class="row">
-  <aside class="span4">
-    <section>
+  <div class="span6 offset3">
+    <section style="text-align:center; margin-bottom:20px">
     <% if @page.image? %>
       <%= image_tag @page.image.url(:large) %>
     <% end %>
-    <%= @page.text %>
     </section>
+    <p>
+    <%= @page.text %>
+    </p>
     <section class="link_section">
     <ul class="thumbnails">
     <%= render @page.links %>
     </ul>
     </section>
-  </aside>
+  </div>
 </div>
+<div class="row">
 <% if(@page.end?) %>
   <h1>The End</h1>
-  <h3><%= link_to "Begin again", story_path(@story) %></h3>
-<% end
-if(@page.success?) %>
-<h1>You're amazing.</h1>
+  <% if(@page.success?) %>
+    <h1>You won you're amazing.<h1>
+  <% end %>
+  <h1><small><%= link_to "Begin again", story_path(@story) %></small><br/>
+  <small><%= link_to "Story list", stories_path %></small></h1>
 <% end %>
-
+</div>
+<div class="pull-right">
 <% if (user_can_edit(@story)) %>
   <%= link_to "Edit", edit_story_page_path(@story,@page), class: "btn btn-medium btn-warning" %>
 <% end %>
+</div>

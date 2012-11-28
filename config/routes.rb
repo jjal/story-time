@@ -13,7 +13,7 @@ KinyeiPos::Application.routes.draw do
     end
   end
 
-  root to: 'static_pages#home'
+  root to: 'stories#index'
 	
 	match '/', to: 'stories#index'
   match '/help',    to: 'static_pages#help'
