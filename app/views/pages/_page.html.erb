@@ -6,7 +6,7 @@
     <% end %>
     <div class="caption">
     <p>
-    <%= truncate(h(page.text), :length => 80,  :separator => " ", :omission => "...")%>
+    <%= raw truncate(h(page.text), :length => 80,  :separator => " ", :omission => "...")%>
     </p>
     <p>
     <%= link_to "Edit", edit_story_page_path(@story, page), method: :get, class: "btn btn-small btn-warning" %>

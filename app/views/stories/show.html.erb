@@ -11,7 +11,7 @@
     <% end %>
     </section>
     <p>
-      <%= @story.description %>
+      <%= raw htmlify(@story.description) %>
     </p>  
  
   <div style="text-align:center">
