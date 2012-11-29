@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121124185512) do
+ActiveRecord::Schema.define(:version => 20121129075921) do
 
   create_table "games", :force => true do |t|
     t.integer  "user_id"
@@ -45,12 +45,12 @@ ActiveRecord::Schema.define(:version => 20121124185512) do
   create_table "pages", :force => true do |t|
     t.integer  "story_id"
     t.string   "title"
-    t.string   "text"
+    t.text     "text",               :limit => 255
     t.boolean  "end"
     t.boolean  "success"
     t.integer  "points"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -71,9 +71,9 @@ ActiveRecord::Schema.define(:version => 20121124185512) do
   create_table "stories", :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "description"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.text     "description",        :limit => 255
     t.string   "image"
     t.string   "image_file_name"
     t.string   "image_content_type"
