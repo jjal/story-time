@@ -5,9 +5,10 @@
 
 <%= f.label :description %>
 <%= f.text_field :description %>
-
+<div class="well">
 <%= f.label :image %>
 <% if @story.image? %>
       <%= image_tag @story.image.url(:medium) %>
     <% end %>
 <%= f.file_field :image %>
+</div>

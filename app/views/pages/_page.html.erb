@@ -1,7 +1,7 @@
-<li class="span3">
-<div class="thumbnail">
-  <h4><%= page.title %></h4>
-  <% if page.image? %>
+<li class="span3" style="margin-left:5px !important">
+  <div class="thumbnail" >
+    <h4><%= page.title %></h4>
+    <% if page.image? %>
       <%= image_tag page.image.url(:small) %>
     <% end %>
     <div class="caption">

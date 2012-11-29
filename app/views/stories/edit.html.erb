@@ -5,9 +5,11 @@
   <div class="span8 offset2">
     <%= form_for(@story) do |f| %>
       <%= render "fields", f: f %>
+      <section>
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      </section>
     <% end %>
-    <div class="">
+    <div class="span9" style="margin-left:-10px">
     <h3>Pages</h3>
     <ul class="thumbnails">
       <%= render @story.pages.find(:all, order: "id") %>
