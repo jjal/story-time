@@ -2,20 +2,22 @@
       
 <%= f.label :title %>
 <%= f.text_field :title %>
-
+<div class="well">
 <%= f.label :image %>
 <% if @page.image? %>
       <%= image_tag @page.image.url(:large) %>
     <% end %>
 <%= f.file_field :image %>
-
+</div>
 <%= f.label :text %>
 <%= f.text_area :text %>
 
 <div class="form-inline">
+<fieldset><legend>Page Options</legend>
 <%= f.check_box :success %>
 <%= f.label :success %>
 
 <%= f.check_box :end %>
 <%= f.label :end %>
+</fieldset>
 </div>

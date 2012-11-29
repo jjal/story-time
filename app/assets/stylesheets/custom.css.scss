@@ -256,3 +256,20 @@ aside {
     }
   }
 }
+
+fieldset {
+  border: 1px solid #BBB;
+  margin-bottom: 20px;
+  padding:19px;
+  border-radius: 4px;
+  
+}
+
+legend {
+  width: auto;
+  display: block;
+  padding: 5px;
+  
+  border-bottom: none;
+  margin-bottom: 0px;
+}
