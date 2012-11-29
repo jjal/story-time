@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  include StoriesHelper
   def index
     @story = Story.find(params[:story_id])
     @pages = @story.pages.paginate(page: params[:page])

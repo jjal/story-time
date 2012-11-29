@@ -14,7 +14,7 @@
     <% end %>
     </section>
     <p>
-    <%= @page.text %>
+    <%= raw htmlify(@page.text) %>
     </p>
     <section class="link_section">
     <ul class="thumbnails">
