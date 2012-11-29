@@ -5,8 +5,26 @@
       <%= image_tag page.image.url(:small) %>
     <% end %>
     <div class="caption">
+      <p>
+      <%= raw truncate(h(page.text), :length => 80,  :separator => " ", :omission => "...")%>
+      </p>
     <p>
-    <%= raw truncate(h(page.text), :length => 80,  :separator => " ", :omission => "...")%>
+    <% if(!page.end?) %>
+    
+    Links to:<br/>
+    <small>
+    <% 
+        page.links.each do |link| %>
+          <%= link.to_page.title %><br/>
+      <% end %>
+    </small>
+    
+    <% else %>
+    <span class="label label-important">End</span>
+    <% if(page.success?) %>
+      <span class="label label-info">Success</span>
+    <% end %>
+    <% end %>
     </p>
     <p>
     <%= link_to "Edit", edit_story_page_path(@story, page), method: :get, class: "btn btn-small btn-warning" %>
