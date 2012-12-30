@@ -1,5 +1,9 @@
+
+
 <li class="span3" style="margin-left:5px !important">
-  <div class="thumbnail" >
+<a name="page<%=page.id%>" id="page<%=page.id%>" style="margin-top:-20px;position:relative"></a>
+  <div class="thumbnail page_thumbnail" >
+  
     <h4><%= page.title %></h4>
     <% if page.image? %>
       <%= image_tag page.image.url(:small) %>
@@ -15,7 +19,7 @@
     <small>
     <% 
         page.links.each do |link| %>
-          <%= link.to_page.title %><br/>
+          <%= link_to link.to_page.title, "#page#{link.to_page.id}" %><br/>
       <% end %>
     </small>
     

@@ -11,13 +11,20 @@
     <% end %>
     <div class="span9" style="margin-left:-10px">
     <h3>Pages</h3>
+    
     <ul class="thumbnails">
       <%= render @story.pages.find(:all, order: "id") %>
     </ul>
     <%= button_to "Add page", new_story_page_path(@story), method: :get, class: "btn btn-medium btn-info" %>
+    </div>
   </div>
-  </div>
-  
+  <script>
+  $(document).ready(function(){
+    var maxHeight = 0;
+    $('.thumbnails li').each(function() { maxHeight = Math.max(maxHeight, $(this).height()); }).height(maxHeight);
+    
+  });
+  </script>
 </div>
 
 
