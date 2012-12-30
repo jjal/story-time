@@ -13,6 +13,11 @@ class StoriesController < ApplicationController
 	def edit
 		@story = Story.find(params[:id])
   end
+  
+  def graph
+    @story = Story.find(params[:story_id])
+    render layout: "blank"
+  end
 	
 	def new
 		@story = current_user.stories.build

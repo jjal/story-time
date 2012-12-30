@@ -8,6 +8,7 @@ KinyeiPos::Application.routes.draw do
   resources :sessions,   only: [:new, :create, :destroy]
   resources :microposts, only: [:create, :destroy]
   resources :stories do
+    get 'graph'
     resources :pages do 
       resources :links
     end
