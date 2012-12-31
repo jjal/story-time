@@ -1,5 +1,5 @@
 <div id="infovis"></div>
-<div id="log"></div>
+<div id="log" style="display:none"></div>
 <script>
 var labelType, useGradients, nativeTextSupport, animate;
 
@@ -57,6 +57,7 @@ function init(){
   var fd = new $jit.ForceDirected({
     //id of the visualization container
     injectInto: 'infovis',
+    
     //Enable zooming and panning
     //with scrolling and DnD
     Navigation: {
@@ -67,6 +68,7 @@ function init(){
       panning: 'avoid nodes',
       zooming: 10 //zoom speed. higher is more sensible
     },
+    
     // Change node and edge styles such as
     // color and width.
     // These properties are also set per node
@@ -107,7 +109,7 @@ function init(){
     //Number of iterations for the FD algorithm
     iterations: 200,
     //Edge length
-    levelDistance: 130,
+    levelDistance: 70,
     // This method is only triggered
     // on label creation and only for DOM labels (not native canvas ones).
     onCreateLabel: function(domElement, node){
@@ -116,14 +118,14 @@ function init(){
       var nameContainer = document.createElement('span'),
           closeButton = document.createElement('span'),
           style = nameContainer.style;
-      nameContainer.className = 'name';
+      nameContainer.className = 'nodeName';
       nameContainer.innerHTML = node.name;
-      closeButton.className = 'close';
+      closeButton.className = 'nodeClose';
       closeButton.innerHTML = 'x';
       domElement.appendChild(nameContainer);
-      domElement.appendChild(closeButton);
+      //domElement.appendChild(closeButton);
       style.fontSize = "0.8em";
-      style.color = "#ddd";
+      style.color = "#666";
       //Fade the node and its connections when
       //clicking the close button
       closeButton.onclick = function() {
@@ -185,6 +187,7 @@ function init(){
     // Change node styles when DOM labels are placed
     // or moved.
     onPlaceLabel: function(domElement, node){
+      
       var style = domElement.style;
       var left = parseInt(style.left);
       var top = parseInt(style.top);
@@ -214,5 +217,6 @@ function init(){
   });
   // end
 }
+
 $(document).ready(function() { init(); });
 </script>

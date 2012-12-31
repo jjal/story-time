@@ -1,8 +1,5 @@
-
-
 <li class="span3" style="margin-left:5px !important">
-<a name="page<%=page.id%>" id="page<%=page.id%>" style="margin-top:-20px;position:relative"></a>
-  <div class="thumbnail page_thumbnail" >
+  <div class="thumbnail page_thumbnail" id="divPage<%=page.id%>" >
   
     <h4><%= page.title %></h4>
     <% if page.image? %>
@@ -17,17 +14,17 @@
     
     Links to:<br/>
     <small>
-    <% 
+    <%
         page.links.each do |link| %>
-          <%= link_to link.to_page.title, "#page#{link.to_page.id}" %><br/>
-      <% end %>
+          <%= link_to link.to_page.title, "javascript:$.scrollTo($('#divPage#{link.to_page.id}'), 800, {offset: -50});highlight('#divPage#{link.to_page.id}');" %><br/>
+    <% end %>
     </small>
     
     <% else %>
     <span class="label label-important">End</span>
-    <% if(page.success?) %>
-      <span class="label label-info">Success</span>
-    <% end %>
+      <% if(page.success?) %>
+        <span class="label label-info">Success</span>
+      <% end %>
     <% end %>
     </p>
     <p>

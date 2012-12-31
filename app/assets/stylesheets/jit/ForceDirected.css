@@ -2,14 +2,14 @@
   font-size:12px;
 }
 
-span.close {
+.nodeClose {
 	color:#FF5555;
 	cursor:pointer;
 	font-weight:bold;
 	margin-left:3px;
 }
 
-span.name {
+.nodeName {
   cursor: pointer;
 }
 

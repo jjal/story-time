@@ -16,7 +16,6 @@ class StoriesController < ApplicationController
   
   def graph
     @story = Story.find(params[:story_id])
-    render layout: "blank"
   end
 	
 	def new
