@@ -13,7 +13,6 @@
     <% end %>
     <div class="span9" style="margin-left:-10px">
     <h3>Pages</h3>
-    <%= link_to "Page graph", story_graph_path(@story) %>
     <ul class="thumbnails">
       <%= render @story.pages.find(:all, order: "id") %>
     </ul>
@@ -27,6 +26,4 @@
     
   });
   </script>
-
 </div>
-     

@@ -1,4 +1,7 @@
 KinyeiPos::Application.routes.draw do
+  
+  
+
   resources :users do
     member do
       get :following, :followers
@@ -12,6 +15,7 @@ KinyeiPos::Application.routes.draw do
     resources :pages do 
       resources :links
     end
+    resources :ratings
   end
 
   root to: 'stories#index'
