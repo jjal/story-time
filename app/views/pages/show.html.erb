@@ -27,9 +27,9 @@
 <% if(@page.end? or @page.success?) %>
   <h1>The End</h1>
   <% if(@page.success?) %>
-    <h1>You won you're amazing.<h1>
+    <h1>You won you're amazing.</h1>
   <% end %>
-  <div class="">
+  <div class="pull-left well well-small">
   <h2>Rate this story</h2>
     <%= render @story.user_rating(current_user)%>
   </div>

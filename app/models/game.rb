@@ -6,7 +6,7 @@ class Game < ActiveRecord::Base
   def visit_page (page)
     if (page.success?)
       self.wins += 1
-    elseif (page.end?)
+    elsif (page.end?)
       self.fails += 1
     end
     

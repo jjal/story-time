@@ -1,18 +1,6 @@
 <%= form_for([@story, rating], :remote => true, :html => { :class => "rating" }) do |f| %>
-  <% if rating.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
-
-      <ul>
-      <% rating.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
-    <div class="rating well">
+    <div class="rating">
       <input type="radio" id="star5" name="rating[score]" value="5" <%= rating.score == 5 ? "checked" : "" %> /><label for="star5" title="Rocks!">5 stars</label>
       <input type="radio" id="star4" name="rating[score]" value="4" <%= rating.score == 4 ? "checked" : "" %> /><label for="star4" title="Pretty good really">4 stars</label>
       <input type="radio" id="star3" name="rating[score]" value="3" <%= rating.score == 3 ? "checked" : "" %> /><label for="star3" title="Ok, I guess">3 stars</label>
@@ -20,10 +8,9 @@
       <input type="radio" id="star1" name="rating[score]" value="1" <%= rating.score == 1 ? "checked" : "" %> /><label for="star1" title="Sucks big time">1 star</label>
     </div>
   </div>
-  <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_field :comment %>
+  <div class="">
+    <%= f.text_area :comment, placeholder: "Comments", rows: 3%>
+    <%= f.hidden_field :user_id %> 
+    <%= f.hidden_field :story_id %>
   </div>
-  <%= f.hidden_field :user_id %> 
-  <%= f.hidden_field :story_id %>
 <% end %>
