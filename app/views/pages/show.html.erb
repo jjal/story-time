@@ -33,6 +33,9 @@
   <small><%= link_to "Story list", stories_path %></small></h1>
 <% end %>
 </div>
+<div>
+  <%= render template: "ratings/new" %>
+</div>
 <div class="pull-right">
 <% if (user_can_edit(@story)) %>
   <%= link_to "Edit", edit_story_page_path(@story,@page), class: "btn btn-medium btn-warning" %>
