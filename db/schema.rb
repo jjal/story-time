@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130101060820) do
+ActiveRecord::Schema.define(:version => 20130106130911) do
 
   create_table "games", :force => true do |t|
     t.integer   "user_id"
@@ -93,11 +93,14 @@ ActiveRecord::Schema.define(:version => 20130101060820) do
   create_table "users", :force => true do |t|
     t.string    "name"
     t.string    "email"
-    t.timestamp "created_at",                         :null => false
-    t.timestamp "updated_at",                         :null => false
+    t.timestamp "created_at",                             :null => false
+    t.timestamp "updated_at",                             :null => false
     t.string    "password_digest"
     t.string    "remember_token"
-    t.boolean   "admin",           :default => false
+    t.boolean   "admin",               :default => false
+    t.string    "avatar_file_name"
+    t.string    "avatar_content_type"
+    t.integer   "avatar_file_size"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

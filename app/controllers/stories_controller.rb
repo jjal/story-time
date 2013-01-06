@@ -25,8 +25,9 @@ class StoriesController < ApplicationController
 	def create
     @story = current_user.stories.build(params[:story])
     if @story.save
-			flash[:success] = "Story created!"
-      redirect_to stories_url
+			flash[:success] = "Cool you created a story. Now add some pages."
+      current_user.microposts.create({content: "#{current_user.name} just created a new story, <a href='#{story_path(@story)}'>'#{@story.title}'</a>" })
+      redirect_to edit_story_path(@story)
     else
       render 'new'
     end

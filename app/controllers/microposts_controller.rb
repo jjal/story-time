@@ -45,12 +45,11 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(params[:micropost])
     if @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_to root_url
+      flash[:success] = "Posted!"
     else
       @feed_items = []
-      render 'static_pages/home'
     end
+    redirect_to :back
   end
 
   # PUT /microposts/1
@@ -60,7 +59,7 @@ class MicropostsController < ApplicationController
 
     respond_to do |format|
       if @micropost.update_attributes(params[:micropost])
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully updated.' }
+        format.html { redirect_to @micropost, notice: 'Updated!' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

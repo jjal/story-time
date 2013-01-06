@@ -12,7 +12,7 @@
 
 class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	attr_accessible(:email, :name, :password, :password_confirmation) 
+	attr_accessible(:email, :name, :password, :password_confirmation, :avatar) 
 	
 	has_secure_password
 	has_many :microposts, dependent: :destroy
@@ -36,8 +36,17 @@ class User < ActiveRecord::Base
 	validates(:password, presence: true, length: { minimum: 6 })
 	validates(:password_confirmation, presence: true)
 	
-	def feed
+  has_attached_file :avatar,
+    styles: { 
+      small: "100x100",
+      medium: "200x200",
+      large: "600x400"
+    },
+    storage: :dropbox,
+    dropbox_credentials: "config/dropbox.yml",
+    dropbox_options: { :path => proc { |style| "user_images/#{id}/#{style}/#{avatar.original_filename}" } }
     
+	def feed
     Micropost.where("user_id = ?", id)
   end
 	

@@ -11,3 +11,9 @@
 
 <%= f.label :password_confirmation, "Confirm Password" %>
 <%= f.password_field :password_confirmation %>
+
+<%= f.label :avatar %>
+
+<%= avatar_for(@user, 100) %>
+
+<%= f.file_field :avatar %>
