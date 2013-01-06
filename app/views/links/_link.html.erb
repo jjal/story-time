@@ -1,1 +1,3 @@
-<li><div class="span4"><%= link_to link.text, story_page_path(@story,link.to_page) %></div></li>
+<li><%= link_to story_page_path(@story,link.to_page) do %>
+<i class="icon-angle-right"></i><%=link.text%>
+<% end %></li>

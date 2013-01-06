@@ -31,7 +31,6 @@ class RatingsController < ApplicationController
     @rating = @story.ratings.build
 
     respond_to do |format|
-      format.html # new.html.erb
       format.json { render json: @rating }
     end
   end
@@ -45,16 +44,12 @@ class RatingsController < ApplicationController
   # POST /ratings
   # POST /ratings.json
   def create
-    @story = Story.find(params[:story_id])
-    @rating = @story.ratings.build(params[:rating])
-    @rating.user_id = current_user.id
+    @rating = Rating.new(params[:rating])
 
     respond_to do |format|
       if @rating.save
-        format.html { redirect_to @rating, notice: 'Rating was successfully created.' }
         format.json { render json: @rating, status: :created, location: @rating }
       else
-        format.html { render action: "new" }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end
@@ -67,10 +62,8 @@ class RatingsController < ApplicationController
 
     respond_to do |format|
       if @rating.update_attributes(params[:rating])
-        format.html { redirect_to @rating, notice: 'Rating was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
     end

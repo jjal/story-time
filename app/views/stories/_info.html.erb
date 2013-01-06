@@ -1,0 +1,26 @@
+<div class="tabbable tabs-below">
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab-stats<%= story.id %>">
+      <ul class="thumbnails">
+        <li><a href="#" rel="tooltip" data-original-title="Pages" class="atooltip"><i class="icon-file"></i> <%= story.pages.count %></a></li>
+        <li><a href="#" rel="tooltip" data-original-title="Words" class="atooltip"><i class="icon-file-alt" alt="words"></i> <%= story.get_word_count %></a></li>
+        <li><a href="#" rel="tooltip" data-original-title="Plays" class="atooltip"><i class="icon-group" alt="plays"></i> <%= story.get_player_count %></a></li>
+        <li><a href="#" rel="tooltip" data-original-title="Won" class="atooltip"><i class="icon-trophy" alt="won"></i> <%= story.get_winner_count %></a></li>
+        <li><a href="#" rel="tooltip" data-original-title="Average rating" class="atooltip"><i class="icon-star-half" alt="avg_rating"></i> <%= story.get_average_rating %></a></li>
+        <li><a href="#" rel="tooltip" data-original-title="Median rating" class="atooltip"><i class="icon-star" alt="med_rating"></i> <%= story.get_median_rating %></a></li>
+      </ul>
+      </div>
+    <div class="tab-pane" id="tab-comments<%= story.id %>">
+      <% story.ratings.each do |r| %>
+        <blockquote>
+          <p><%= r.comment %> </p>
+          <small><%= r.user.name %></small>
+        </blockquote>
+      <% end %>
+    </div>
+  </div>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#tab-stats<%= story.id %>" data-toggle="tab"><i class="icon-cogs"></i> Stats</a></li>
+    <li><a href="#tab-comments<%= story.id %>" data-toggle="tab"><i class="icon-comments"></i> Comments</a></li>
+  </ul>
+</div>

@@ -17,8 +17,8 @@
     <%= raw htmlify(@page.text) %>
     </p>
     <section class="link_section">
-    <ul class="thumbnails">
-    <%= render @page.links %>
+    <ul class="unstyled">
+      <%= render @page.links %>
     </ul>
     </section>
   </div>
@@ -29,12 +29,13 @@
   <% if(@page.success?) %>
     <h1>You won you're amazing.<h1>
   <% end %>
+  <div class="">
+  <h2>Rate this story</h2>
+    <%= render @story.user_rating(current_user)%>
+  </div>
   <h1><small><%= link_to "Begin again", story_path(@story) %></small><br/>
   <small><%= link_to "Story list", stories_path %></small></h1>
 <% end %>
-</div>
-<div>
-  <%= render template: "ratings/new" %>
 </div>
 <div class="pull-right">
 <% if (user_can_edit(@story)) %>

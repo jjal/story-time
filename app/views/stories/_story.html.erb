@@ -1,22 +1,22 @@
 <li class="span12">
   <div class="row">
-  <div class="story_thumb span2">
-    <% if(story.image?) %>
-      <%= image_tag story.image.url(:medium) %>
-    <% end %>
-  </div>
-    <div class="story_title span3 offset3">
+    <div class="story_thumb span2">
+      <% if(story.image?) %>
+        <%= image_tag story.image.url(:medium) %>
+      <% end %>
+    </div>
+    <div class="story_title span7 ">
       <h3><%= story.title %></h3>
       <small><cite>By <%= story.user.nil? ? "Anonymous" : story.user.name %></cite></small>
       <p><%= story.description %></p>
+      <%= render partial: "info", locals: {story: story} %>
     </div>
-    <div class="story_desc span3"></div>
-    <div class="story_button span3">
+    <div class="story_button">
       <% if user_can_edit(story) %>
         <%= button_to "Edit", edit_story_path(story), method: :get, class: "btn btn-large btn-warning" %>
       <% end %>
 
-      <%= button_to "Play", story_path(story), method: :get, class: "btn btn-large btn-primary" %>
+      <%= button_to "Play", story_path(story), method: :get, class: "btn btn-large btn-success" %>
             <% if current_user.admin? %>
         <%= button_to "Delete", story_path(story), method: :delete, class: "btn btn-small btn-danger" %>
       <% end %>

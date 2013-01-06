@@ -12,3 +12,7 @@ function highlight(elemId){
 if (document.location.hash) {
     highlight(document.location.hash);
 }
+
+$(document).ready(function() {
+   $("[rel=tooltip]").tooltip();
+});
