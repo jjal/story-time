@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   before_filter :correct_user,   only: [:destroy, :edit, :update]
   
   def index
-    @stories = Story.paginate(page: params[:page])
+    @stories = Story.paginate(page: params[:page], :per_page => 10)
   end 
   
 	def show
