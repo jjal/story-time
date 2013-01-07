@@ -15,7 +15,11 @@
     </p>  
  
   <div style="text-align:center">
-        <%= link_to "Begin story", story_page_path(@story,@story.pages.find(:first, order: "id")), class:"btn btn-large btn-primary" %>
+  <% if !@story.first_page.nil? %>
+        <%= link_to "Begin story", story_page_path(@story,@story.first_page), class:"btn btn-large btn-primary" %>
+  <% else %>
+        No pages yet!
+  <% end %>
   </div>
    </div>
 </div>

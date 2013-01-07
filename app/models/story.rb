@@ -32,6 +32,10 @@ class Story < ActiveRecord::Base
     self.games.find(:all, conditions: {wins: true}).count
   end
   
+  def first_page
+    self.pages.find(:first, order: "id")
+  end
+  
   def get_average_rating
     self.ratings.average(:score)
   end
