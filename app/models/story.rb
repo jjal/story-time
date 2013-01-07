@@ -40,6 +40,10 @@ class Story < ActiveRecord::Base
     median(self.ratings.collect { |r| r.score })
   end
   
+  def get_comment_ratings
+    self.ratings.select { |r| !r.comment.empty? }
+  end
+  
   def get_game_for_user(user)
     return ((game = self.games.find_by_user_id(user.id)) ? game : self.games.create!(user_id: user.id, wins: 0, fails: 0, pages: 0))
   end

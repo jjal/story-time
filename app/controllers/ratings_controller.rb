@@ -45,7 +45,11 @@ class RatingsController < ApplicationController
   # POST /ratings.json
   def create
     @rating = Rating.new(params[:rating])
-
+    if(old_rating = @rating.story.user_rating(current_user))
+      old_rating.update_attributes(params[:rating])
+      @rating = old_rating
+    end
+    
     respond_to do |format|
       if @rating.save
         format.json { render json: @rating, status: :created, location: @rating }

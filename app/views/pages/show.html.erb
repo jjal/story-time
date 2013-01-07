@@ -28,11 +28,11 @@
   <h1>The End</h1>
   <% if(@page.success?) %>
     <h1>You won you're amazing.</h1>
-  <% end %>
-  <div class="pull-left well well-small">
+    <div class="pull-left well well-small">
   <h2>Rate this story</h2>
     <%= render @story.user_rating(current_user)%>
   </div>
+  <% end %>
   <h1><small><%= link_to "Begin again", story_path(@story) %></small><br/>
   <small><%= link_to "Story list", stories_path %></small></h1>
 <% end %>
