@@ -16,7 +16,7 @@
     <small>
     <%
         page.links.each do |link| %>
-          <%= link_to link.to_page.title, "javascript:$.scrollTo($('#divPage#{link.to_page.id}'), 800, {offset: -50});highlight('#divPage#{link.to_page.id}');" %><br/>
+          <%= link_to link.to_page.title, "javascript:$.scrollTo($('#divPage#{link.to_page.id}'), 800, {offset: -50});highlight('#divPage#{link.to_page.id}');" unless link.to_page.nil? %><br/>
     <% end %>
     </small>
     
