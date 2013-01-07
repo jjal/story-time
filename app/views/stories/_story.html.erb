@@ -1,9 +1,7 @@
 <li class="span12">
   <div class="row">
     <div class="story_thumb span2">
-      <% if(story.image?) %>
-        <%= image_tag story.image.url(:medium) %>
-      <% end %>
+      <%= image_for story, 100 %>
     </div>
     <div class="story_title span7 ">
       <h3><%= story.title %></h3>

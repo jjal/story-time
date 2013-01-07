@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130106130911) do
+ActiveRecord::Schema.define(:version => 20130107141522) do
 
   create_table "games", :force => true do |t|
     t.integer   "user_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20130106130911) do
     t.string    "image_content_type"
     t.integer   "image_file_size"
     t.timestamp "image_updated_at"
+    t.string    "image_url"
   end
 
   create_table "ratings", :force => true do |t|
@@ -88,6 +89,7 @@ ActiveRecord::Schema.define(:version => 20130106130911) do
     t.string    "image_content_type"
     t.integer   "image_file_size"
     t.timestamp "image_updated_at"
+    t.string    "image_url"
   end
 
   create_table "users", :force => true do |t|

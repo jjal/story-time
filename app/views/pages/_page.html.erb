@@ -2,9 +2,7 @@
   <div class="thumbnail page_thumbnail" id="divPage<%=page.id%>" >
   
     <h4><%= page.title %></h4>
-    <% if page.image? %>
-      <%= image_tag page.image.url(:small) %>
-    <% end %>
+    <%= image_for page, 60 %>
     <div class="caption">
       <p>
       <%= raw truncate(h(page.text), :length => 80,  :separator => " ", :omission => "...")%>

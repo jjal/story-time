@@ -8,7 +8,7 @@ module UsersHelper
   end
   
   def avatar_for(user, size=nil)
-    image_url = user.avatar.file? ? user.avatar.url(:medium) : "/assets/default_avatar.png" 
+    image_url = user.avatar.file? ? user.avatar.url((size.nil? || size > 100) ? :large : :medium) : "/assets/default_avatar.png" 
     image_tag(image_url, alt: user.name, width: size, class: "avatar")
   end
 end

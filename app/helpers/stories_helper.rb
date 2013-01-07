@@ -17,4 +17,10 @@ module StoriesHelper
     .gsub(/_([^_]+)_/,'<em>\1</em>') #italics
     .gsub(/\*([^_]+)\*/,'<strong>\1</strong>') #bold
   end
+  
+  def image_for(story, size=nil)
+    image_url = story.image.file? ? story.image.url((size.nil? || size > 200) ? :large : :medium) : (story.image_url.blank? ? "/assets/Placeholder.jpg" : story.image_url)
+    image_tag(image_url, alt: story.title, width: size, class: "image")
+  end
+  
 end

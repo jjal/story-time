@@ -4,10 +4,9 @@
 <%= f.text_field :title %>
 <div class="well">
 <%= f.label :image %>
-<% if @page.image? %>
-      <%= image_tag @page.image.url(:large) %>
-    <% end %>
+<%= image_for @page %>
 <%= f.file_field :image %>
+<%= f.text_field :image_url %>
 </div>
 <%= f.label :text %>
 <%= f.text_area :text %>
