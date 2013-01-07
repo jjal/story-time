@@ -1,4 +1,6 @@
+<%= will_paginate @stories %>
 <ul class="thumbnails">
   <%= render @stories %>
 </ul>
+<%= will_paginate @stories %>
 <%= button_to "Add a story", new_story_path, method: :get, class: "btn btn-large btn-primary" %>
