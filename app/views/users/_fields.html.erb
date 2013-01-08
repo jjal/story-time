@@ -12,8 +12,8 @@
 <%= f.label :password_confirmation, "Confirm Password" %>
 <%= f.password_field :password_confirmation %>
 
-<%= f.label :avatar %>
-
+<div class="well">
 <%= avatar_for(@user, 100) %>
-
+<%= f.label :avatar %>
 <%= f.file_field :avatar %>
+</div>

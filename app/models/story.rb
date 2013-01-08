@@ -1,7 +1,7 @@
 class Story < ActiveRecord::Base
   include StoriesHelper
   
-  attr_accessible :id, :image, :title, :user_id, :description, :image_file_name, :image_content_type, :image_file_size, :image_updated_at
+  attr_accessible :id, :image, :title, :user_id, :description, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :image_url
   has_many :pages
   has_many :ratings
   has_many :games

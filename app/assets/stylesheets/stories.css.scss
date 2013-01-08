@@ -12,3 +12,11 @@
     color: black;
   }
  }
+ 
+ #infovis {
+  box-shadow: 2px 2px 5px rgba(0,0,0,.5);
+  -webkit-box-shadow:  2px 2px 5px rgba(0,0,0,.5);
+-moz-box-shadow:  2px 2px 5px rgba(0,0,0,.5);
+  border: 0.07em solid #E0E0E0;
+  border-radius: 4px;
+ }  

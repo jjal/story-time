@@ -6,8 +6,10 @@
 <%= f.label :description %>
 <%= f.text_field :description %>
 <div class="well">
+<%= image_for_story @story %>
 <%= f.label :image %>
-<%= image_for @story %>
 <%= f.file_field :image %>
-<%= f.text_field :image_url %>
+ <br/>- or -
+<%= f.label :image_url %>
+<%= f.text_field :image_url,  placeholder: "URL to your image"%>
 </div>

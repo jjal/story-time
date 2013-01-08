@@ -3,10 +3,12 @@
 <%= f.label :title %>
 <%= f.text_field :title %>
 <div class="well">
+<%= image_for_page @page %>
 <%= f.label :image %>
-<%= image_for @page %>
 <%= f.file_field :image %>
-<%= f.text_field :image_url %>
+<br/> - or -
+<%= f.label :image_url %>
+<%= f.text_field :image_url, placeholder: "URL to your image" %>
 </div>
 <%= f.label :text %>
 <%= f.text_area :text %>

@@ -12,7 +12,7 @@
         </section>
       </div>
     <% end %>
-   <%= f.link_to_add "Add a link", :links, class: "btn btn-small btn-info" %>
+   <%= f.link_to_add "Add a link", :links, class: "btn btn-small btn-info" unless @story.pages.empty? %>
    </div>
   <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
 <% end %>

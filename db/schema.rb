@@ -59,12 +59,12 @@ ActiveRecord::Schema.define(:version => 20130107141522) do
   end
 
   create_table "ratings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "story_id"
-    t.integer  "score"
-    t.string   "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer   "user_id"
+    t.integer   "story_id"
+    t.integer   "score"
+    t.string    "comment"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
   end
 
   create_table "relationships", :force => true do |t|

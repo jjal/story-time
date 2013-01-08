@@ -3,7 +3,7 @@
   <aside class="span3">
     <section>
       <h1>
-        <%= avatar_for(@user, 100) %>
+        <%= avatar_for(@user, 100) %><br/>
         <%= @user.name %>
       </h1>
     </section>
@@ -23,7 +23,3 @@
     <% end %>
   </div>
 </div>
-
-<% if(@user == current_user) %>
-  <%= link_to "Edit", edit_user_path(@user) %>
-<% end %>

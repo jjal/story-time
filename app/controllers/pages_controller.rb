@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 	def show
     @story = Story.find(params[:story_id])
 		@page = Page.find(params[:id])
-    @story.get_game_for_user(current_user).visit_page(@page)
+    #@story.get_game_for_user(current_user).visit_page(@page)
 	end
 	
 	def edit
