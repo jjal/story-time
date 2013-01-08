@@ -23,9 +23,9 @@
     </div>
   </div>
   <script>
-  $(document).ready(function(){
+  $(window).load(function(){
     var maxHeight = 0;
-    $('.thumbnails li').each(function() { maxHeight = Math.max(maxHeight, $(this).height()); }).height(maxHeight+60);
+    $('.thumbnails li').each(function() { maxHeight = Math.max(maxHeight, $(this).height()); }).height(maxHeight);
     
   });
   </script>
