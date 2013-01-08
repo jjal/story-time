@@ -52,9 +52,11 @@ class RatingsController < ApplicationController
     
     respond_to do |format|
       if @rating.save
-        format.json { render json: @rating, status: :created, location: @rating }
+        format.json { render json: @rating, status: :created, location: nil }
+        format.html { render partial: 'rating' }
       else
         format.json { render json: @rating.errors, status: :unprocessable_entity }
+        format.html { render partial: 'rating' }
       end
     end
   end
