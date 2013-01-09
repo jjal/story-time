@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update]
+  before_filter :signed_in_user, only: [:index, :edit, :update, :show]
   before_filter :correct_user,   only: [:destroy, :edit, :update]
   
   def index

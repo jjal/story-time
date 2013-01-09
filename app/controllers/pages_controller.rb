@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  before_filter :signed_in_user, only: [:index, :edit, :update, :show]
+  
   include StoriesHelper
   def index
     @story = Story.find(params[:story_id])
