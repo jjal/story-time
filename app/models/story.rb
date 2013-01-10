@@ -1,7 +1,7 @@
 class Story < ActiveRecord::Base
   include StoriesHelper
   
-  attr_accessible :id, :image, :title, :user_id, :description, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :image_url
+  attr_accessible :id, :image, :title, :user_id, :description, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :image_url, :status
   has_many :pages
   has_many :ratings
   has_many :games
@@ -15,6 +15,31 @@ class Story < ActiveRecord::Base
     storage: :dropbox,
     dropbox_credentials: "config/dropbox.yml",
     dropbox_options: { :path => proc { |style| "images/#{id}/#{style}/#{image.original_filename}" } }
+  
+  after_initialize :init
+  
+  
+  DRAFT     = 0
+  PUBLISHED = 1
+  REVIEW    = 2
+
+  STATUSES = {
+    DRAFT    => 'Draft',
+    PUBLISHED    => 'Published',
+    REVIEW => 'Review'
+  }
+
+  validates_inclusion_of :status, :in => STATUSES.keys,
+      :message => "{{value}} must be in #{STATUSES.values.join ','}"
+
+  def init
+    self.status = 0
+  end
+  
+  # just a helper method for the view
+  def status_name
+    STATUSES[status]
+  end
   
   def user_rating(user)
     self.ratings.find_by_user_id(user.id) || self.ratings.build(user_id: user.id)

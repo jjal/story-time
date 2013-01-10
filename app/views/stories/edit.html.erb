@@ -11,15 +11,30 @@
       <%= f.submit "Update details", class: "btn btn-medium btn-primary" %>
       </section>
     <% end %>
+
+    <% if @story.status == Story::PUBLISHED %>
+      <%= form_for @story, :method => :put do |f| %>
+        <%= f.hidden_field :status, :value => 0 %>
+        <%= f.submit "Unpublish Story", class: "btn btn-large btn-block" %>
+      <% end %>
+    <% else %>
+      <%= form_for @story, :method => :put do |f| %>
+        <%= f.hidden_field :status, :value => 1 %>
+        <%= f.submit "Publish Story", class: "btn btn-large btn-danger btn-block" %>
+      <% end %>
+    <% end %>
+        
     <div class="span9" style="margin-left:-10px">
       <h3>Pages</h3>
       <ul class="thumbnails">
         <%= render @story.pages.find(:all, order: "id") %>
       </ul>
-      <div class="">
-        <%= button_to "Add page", new_story_page_path(@story), method: :get, class: "btn btn-large btn-primary" %>&nbsp;
-        <%= link_to "Play", story_path(@story), method: :get, class: "btn btn-large btn-success" %>
-      </div>
+      <hr />
+      <p style="display: block">
+        <%= link_to "Add page", new_story_page_path(@story), method: :get, class: "btn btn-large btn-primary" %>&nbsp;
+      
+        <%= link_to "Play", story_path(@story), method: :get, class: "btn btn-large btn-success btn-play" %>
+      </p>
     </div>
   </div>
   <script>
