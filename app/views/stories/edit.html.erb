@@ -11,7 +11,7 @@
       <%= f.submit "Update details", class: "btn btn-medium btn-primary" %>
       </section>
     <% end %>
-
+    
     <% if @story.status == Story::PUBLISHED %>
       <%= form_for @story, :method => :put do |f| %>
         <%= f.hidden_field :status, :value => 0 %>
