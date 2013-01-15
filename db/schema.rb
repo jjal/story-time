@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110140730) do
+ActiveRecord::Schema.define(:version => 20130111125634) do
 
   create_table "games", :force => true do |t|
     t.integer   "user_id"
@@ -43,19 +43,19 @@ ActiveRecord::Schema.define(:version => 20130110140730) do
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
   create_table "pages", :force => true do |t|
-    t.integer   "story_id"
-    t.string    "title"
-    t.text      "text"
-    t.boolean   "end"
-    t.boolean   "success"
-    t.integer   "points"
-    t.timestamp "created_at",         :null => false
-    t.timestamp "updated_at",         :null => false
-    t.string    "image_file_name"
-    t.string    "image_content_type"
-    t.integer   "image_file_size"
-    t.timestamp "image_updated_at"
-    t.string    "image_url"
+    t.integer  "story_id"
+    t.string   "title"
+    t.text     "text"
+    t.boolean  "end"
+    t.boolean  "success"
+    t.integer  "points"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "image_url",          :limit => 1024
   end
 
   create_table "ratings", :force => true do |t|
@@ -79,18 +79,18 @@ ActiveRecord::Schema.define(:version => 20130110140730) do
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
 
   create_table "stories", :force => true do |t|
-    t.string    "image"
-    t.string    "title"
-    t.integer   "user_id"
-    t.timestamp "created_at",         :null => false
-    t.timestamp "updated_at",         :null => false
-    t.text      "description"
-    t.string    "image_file_name"
-    t.string    "image_content_type"
-    t.integer   "image_file_size"
-    t.timestamp "image_updated_at"
-    t.string    "image_url"
-    t.integer   "status"
+    t.string   "image"
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "image_url",          :limit => 1024
+    t.integer  "status"
   end
 
   create_table "users", :force => true do |t|

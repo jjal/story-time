@@ -18,6 +18,8 @@ class Story < ActiveRecord::Base
   
   after_initialize :init
   
+  validates_length_of :image_url, :maximum => 1000, :allow_blank => true
+  
   
   DRAFT     = 0
   PUBLISHED = 1
