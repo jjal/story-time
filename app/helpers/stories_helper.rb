@@ -7,7 +7,7 @@ module StoriesHelper
   
   def median(array)
     return nil if array.empty?
-    array.sort!
+    array.select {|v| !v.nil? }.sort!
     middle = array.length / 2
     (array.length % 2 == 1) ? array[middle] : ((array[middle-1] + array[middle])/2)
   end
