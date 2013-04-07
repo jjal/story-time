@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :show]
+  before_filter :signed_in_user, only: [:edit, :update, :new, :create]
   before_filter :correct_user,   only: [:destroy, :edit, :update]
   before_filter :correct_story, only: [:destroy, :edit, :update, :show]
   

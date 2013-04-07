@@ -27,16 +27,18 @@
   <% if(@page.success?) %>
     <h1>You won you're amazing.</h1>
     <div class="pull-left well well-small">
-  <h2>Rate this story</h2>
-    <%= render @story.user_rating(current_user)%>
-  </div>
+    <% if(signed_in?) %>
+      <h2>Rate this story</h2>
+        <%= render @story.user_rating(current_user)%>
+      </div>
+    <% end %>
   <% end %>
   <h1><small><%= link_to "Begin again", story_path(@story) %></small><br/>
   <small><%= link_to "Story list", stories_path %></small></h1>
 <% end %>
 </div>
 <div class="pull-right">
-<% if (user_can_edit(@story)) %>
+<% if (signed_in? and user_can_edit(@story)) %>
   <%= link_to "Edit", edit_story_page_path(@story,@page), class: "btn btn-medium btn-warning" %>
 <% end %>
 </div>

@@ -10,12 +10,12 @@
       <%= render partial: "info", locals: {story: story} %>
     </div>
     <div class="story_button">
-      <% if user_can_edit(story) %>
+      <% if signed_in? and user_can_edit(story) %>
         <%= button_to "Edit", edit_story_path(story), method: :get, class: "btn btn-large btn-warning" %>
       <% end %>
 
       <%= button_to "Play", story_path(story), method: :get, class: "btn btn-large btn-success" %>
-            <% if current_user.admin? %>
+      <% if signed_in? and current_user.admin? %>
         <%= button_to "Delete", story_path(story), method: :delete, class: "btn btn-small btn-danger" %>
       <% end %>
     </div>

@@ -1,9 +1,14 @@
 class StoriesController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :show]
+  before_filter :signed_in_user, only: [:edit, :update, :new, :create, :graph, :destroy]
   before_filter :correct_user,   only: [:destroy, :edit, :update]
   
   def index
-    @stories = Story.paginate(page: params[:page], per_page: 10, order: :title, conditions: current_user.admin? ? {} : ["status = 1 or user_id = ?", current_user.id])
+    @stories = Story.paginate(page: params[:page], per_page: 10, order: :title, conditions: 
+      signed_in? ? 
+        (current_user.admin?) ? {} : ["status = 1 or user_id = ?", current_user.id]
+      :
+        ["status = 1"]
+    )
   end 
   
 	def show
