@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :show]
+  before_filter :correct_user,   only: [:destroy, :edit, :update]
+  before_filter :correct_story, only: [:destroy, :edit, :update, :show]
   
   include StoriesHelper
   def index
@@ -8,14 +10,11 @@ class PagesController < ApplicationController
   end 
   
 	def show
-    @story = Story.find(params[:story_id])
-		@page = Page.find(params[:id])
-    #@story.get_game_for_user(current_user).visit_page(@page)
+    
 	end
 	
 	def edit
-		@story = Story.find(params[:story_id])
-    @page = Page.find(params[:id])
+		
   end
 	
 	def new
@@ -36,8 +35,7 @@ class PagesController < ApplicationController
   end
 	
 	def update
-    @story = Story.find(params[:story_id])
-		@page = Page.find(params[:id])
+    
     if @page.update_attributes(params[:page])
 			flash[:success] = "Page updated"
       redirect_to edit_story_path(@story)
@@ -47,9 +45,26 @@ class PagesController < ApplicationController
   end
 	 
 	def destroy
-    @story = Story.find(params[:story_id])
-    Page.find(params[:id]).destroy
+    @page.destroy
     flash[:success] = "Page destroyed."
     redirect_to edit_story_path(@story)
   end
+  
+    private
+    def correct_story 
+      @story = Story.find_by_id(params[:story_id])
+      @page = @story.pages.find_by_id(params[:id])
+      if(@page.nil?)
+        flash[:error] = "That page doesn't exist in this story"
+        redirect_to story_url(@story)
+      end
+    end
+    
+    def correct_user
+      story = current_user.stories.select { |s| !s.pages.find_by_id(params[:id]).nil? }
+      if(story.empty? and !current_user.admin?)
+        flash[:error] = "You need to be the owner of that page to modify it."
+        redirect_to root_url if story.empty?
+      end
+    end
 end

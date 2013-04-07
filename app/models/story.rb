@@ -68,7 +68,7 @@ class Story < ActiveRecord::Base
   end
   
   def get_median_rating
-    median(self.ratings.collect { |r| r.score })
+    median(self.ratings.select { |r| !r.score.nil? }.collect { |r| r.score })
   end
   
   def get_comment_ratings
