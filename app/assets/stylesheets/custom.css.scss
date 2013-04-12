@@ -75,14 +75,13 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   line-height: 1;
+  color: #666;
   &:hover {
-    color: white;
     text-decoration: none;
   }
 }
@@ -114,6 +113,9 @@ footer {
 }
 
 /* miscellaneous */
+.navbar-inner {
+  background-image: none;
+}
 
 .debug_dump {
   clear: both;
