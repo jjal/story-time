@@ -1,10 +1,12 @@
 <% provide(:title, @story.title) %>
-<section>
+ <div class="story_box">
+ <section>
   <h1><%= @story.title %></h1>
 </section>
     
 <div class="row">
   <div class="span6 offset3">
+ 
     <section style="text-align:center; margin-bottom:20px">
     <%= image_for_story @story, 600 %>
     </section>
@@ -20,4 +22,5 @@
   <% end %>
   </div>
    </div>
+</div>
 </div>

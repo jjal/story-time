@@ -3,7 +3,9 @@
   <aside class="span3">
     <section>
       <h1>
-        <%= avatar_for(@user, 100) %><br/>
+        <div class="photo thumb">
+      <%=avatar_for(@user, 100)%>
+    </div>
         <%= @user.name %>
       </h1>
     </section>

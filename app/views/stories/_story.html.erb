@@ -1,23 +1,32 @@
-<li class="span12">
-  <div class="row">
-    <div class="story_thumb span2">
+<li class="story_card">
+<div class="span story_box">
+  <div class="pull-left span2">
+    <div class="story_thumb">
       <%= image_for_story story, 100 %>
     </div>
-    <div class="story_title span7 ">
-      <h3><%= story.title %></h3>
-      <small><cite>By <%= story.user.nil? ? "Anonymous" : story.user.name %></cite></small>
-      <p><%= story.description %></p>
-      <%= render partial: "info", locals: {story: story} %>
-    </div>
     <div class="story_button">
-      <% if signed_in? and user_can_edit(story) %>
-        <%= button_to "Edit", edit_story_path(story), method: :get, class: "btn btn-large btn-warning" %>
+     <% if signed_in? and user_can_edit(story) %>
+        <%= link_to edit_story_path(story) do %><div class="btn-round btn-yellow btn-round-small"><i class='icon-edit'></i></div><% end %>
       <% end %>
-
-      <%= button_to "Play", story_path(story), method: :get, class: "btn btn-large btn-success" %>
+      <%= link_to story_path(story) do %><div class="btn-round btn-green btn-round-small"><i class='icon-play'></i></div><% end %>
       <% if signed_in? and current_user.admin? %>
-        <%= button_to "Delete", story_path(story), method: :delete, class: "btn btn-small btn-danger" %>
+        <%= link_to story_path(story), method: :delete do %><div class="btn-round btn-red btn-round-small"><i class='icon-trash'></i></div><% end %>
       <% end %>
     </div>
   </div>
+  <div class="story_title span7 pull-left">
+    <h3><%= story.title %></h3>
+    
+    <p><%= story.description %></p>
+    <%= render partial: "info", locals: {story: story} %>
+  </div>
+  <div class="pull-left span2 story_author">
+    <div class="thumb">
+      <%=avatar_for(story.user, 52)%>
+    </div>
+    <div class="span2">
+      <small><cite><%= story.user.nil? ? "Anonymous" : story.user.name %></cite></small>
+    </div>
+  </div>
+</div>
 </li>

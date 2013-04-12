@@ -16,8 +16,14 @@ html {
   overflow-y: scroll;
 }
 
+
+
 body {
+  font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
   padding-top: 60px;
+  min-width: 980px;
+  background: #eee url(/assets/light-texture.jpg) repeat;
+  color: #444;
 }
 
 section {
@@ -297,5 +303,97 @@ p {
   outline: 0;
   outline: thin dotted \9;
   /* IE6-9 */
+}
 
+
+.story_card .thumb {
+  float: left;
+  margin: 0 10px 10px 0;
+}
+
+.thumb {
+  display: inline-block;
+  width: 62px;
+  height: 62px;
+  overflow: hidden;
+  border: 6px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.thumb img {
+  display: block;
+  width: 100%;
+  border-radius: 100%;
+  margin-bottom: 10px;
+}
+
+.btn-round {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  border: 5px solid #fff;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  round-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  cursor: pointer;
+  padding-top: 12px;
+  padding-left:12px;
+  color: #666;
+  margin: 5px;
+  &:hover {
+    color: #333;
+  }
+}
+
+.btn-round.btn-green
+{
+  &:hover {
+    border-color: #0ACF00;
+  }
+}
+.btn-round.btn-orange
+{
+  &:hover {
+    border-color: #FF7400;
+  }
+}
+.btn-round.btn-blue
+{
+  &:hover {
+    border-color: #1435AD;
+  }
+}
+.btn-round.btn-purple
+{
+  &:hover {
+    border-color: #8506A9;
+  }
+}
+.btn-round.btn-red
+{
+  &:hover {
+    border-color: #FF0000;
+  }
+}
+.btn-round.btn-yellow
+{
+  &:hover {
+    border-color: #FFE800;
+  }
+}
+.btn-round.btn-round-large
+{
+  width:60px;
+  height:60px;
+  border-width:6px;
+}
+.btn-round.btn-round-small 
+{
+  width: 20px;
+  height: 20px;
+  border-width: 3px;
+  padding-left: 4px;
+  padding-top: 2px;
 }
