@@ -13,11 +13,13 @@
       <div class="story_count"><div class="btn-round btn-black btn-round-small pull-left"><%=@user.stories.count%></div>Stories</div>
       <div class="recent_activity"><small>Most recent activity<br/><cite><%=raw @user.microposts.last.try(:content)%></cite></small></div>
     </section>
+    <div class="span9 card">
     <section>
       <% if (current_user == @user) %>
         <%= render partial: "/microposts/form", locals: { micropost: @user.microposts.build } %>
       <% end %>
     </section>
+    </div>
   
   <div class="span9">
     <% if @user.stories.any? %>
