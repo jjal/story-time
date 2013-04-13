@@ -1,5 +1,5 @@
 <% provide(:title, @story.title) %>
- <div class="story_box">
+ <div class="card story_box">
  <section>
   <h1><%= @story.title %></h1>
 </section>
@@ -16,7 +16,7 @@
  
   <div style="text-align:center">
   <% if !@story.first_page.nil? %>
-        <%= link_to "Begin story", story_page_path(@story,@story.first_page), class:"btn btn-large btn-primary" %>
+        <%= link_to "Begin Story", story_page_path(@story,@story.first_page), class:"btn-square btn-green" %>
   <% else %>
         No pages yet!
   <% end %>

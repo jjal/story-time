@@ -1,32 +1,30 @@
-<li class="story_card">
+<li class="card story_card">
 <div class="span story_box">
-  <div class="pull-left span2">
+  <div class="story_box_left span2">
     <div class="story_thumb">
       <%= image_for_story story, 100 %>
     </div>
     <div class="story_button">
-     <% if signed_in? and user_can_edit(story) %>
+      <%= link_to story_path(story) do %><div class="btn-round btn-green"><i class='icon-play icon-large'></i></div><% end %>
+      <% if signed_in? and user_can_edit(story) %>
         <%= link_to edit_story_path(story) do %><div class="btn-round btn-yellow btn-round-small"><i class='icon-edit'></i></div><% end %>
       <% end %>
-      <%= link_to story_path(story) do %><div class="btn-round btn-green btn-round-small"><i class='icon-play'></i></div><% end %>
       <% if signed_in? and current_user.admin? %>
         <%= link_to story_path(story), method: :delete do %><div class="btn-round btn-red btn-round-small"><i class='icon-trash'></i></div><% end %>
       <% end %>
     </div>
   </div>
-  <div class="story_title span7 pull-left">
-    <h3><%= story.title %></h3>
+  <div class="story_right <%= !(hideAuthor||=nil).nil? ? "span6" : "span7" %>">
+    <% if((hideAuthor||=nil).nil?) %>
+      <div class="thumb pull-right">
+        <%=avatar_for(story.user, 52)%>
+      </div>
+    <% end %>
+    <h3><%= get_story_title(story) %></h3>
+    <small><cite>By <%= story.user.nil? ? "Anonymous" : story.user.name %></cite></small>
     
     <p><%= story.description %></p>
-    <%= render partial: "info", locals: {story: story} %>
-  </div>
-  <div class="pull-left span2 story_author">
-    <div class="thumb">
-      <%=avatar_for(story.user, 52)%>
-    </div>
-    <div class="span2">
-      <small><cite><%= story.user.nil? ? "Anonymous" : story.user.name %></cite></small>
-    </div>
+    <%= render partial: "/stories/info", locals: {story: story} %>
   </div>
 </div>
 </li>

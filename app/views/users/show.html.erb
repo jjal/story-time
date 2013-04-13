@@ -1,23 +1,38 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="span3">
-    <section>
-      <h1>
-        <div class="photo thumb">
-      <%=avatar_for(@user, 100)%>
-    </div>
+    <section class="user_business_card span6">
+      <div class="clearfix">
+        <div class="photo">
+          <%=avatar_for(@user, 100)%>
+        </div>
+        <h3>
         <%= @user.name %>
-      </h1>
+        </h3>
+      </div>
+      <hr />
+      <div class="story_count"><div class="btn-round btn-black btn-round-small pull-left"><%=@user.stories.count%></div>Stories</div>
+      <div class="recent_activity"><small>Most recent activity<br/><cite><%=raw @user.microposts.last.try(:content)%></cite></small></div>
     </section>
     <section>
       <% if (current_user == @user) %>
         <%= render partial: "/microposts/form", locals: { micropost: @user.microposts.build } %>
       <% end %>
     </section>
-  </aside>
+  
+  <div class="span9">
+    <% if @user.stories.any? %>
+      <h3>Stories</h3>
+      <ul class="thumbnails">
+        <% @user.stories.each do |story| %>
+          <%= render partial: "/stories/story", locals: { story: story, hideAuthor: true } %>
+        <%end%>
+      </ul>
+      
+    <% end %>
+  </div>
   <div class="span9">
     <% if @user.microposts.any? %>
-      <h3>Activity (<%= @user.microposts.count %>)</h3>
+      <h3>Activity</h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

@@ -23,4 +23,12 @@ module StoriesHelper
     image_tag(image_url, alt: story.title, width: size, class: "image")
   end
   
+  def get_story_title(story)
+    if(story.title.empty?)
+      return raw '<span class="disabled">Unnamed Story</span>'
+    else
+      return story.title
+    end
+  end
+  
 end

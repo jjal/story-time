@@ -8,7 +8,7 @@
     <%= form_for(@story) do |f| %>
       <%= render "fields", f: f %>
       <section>
-      <%= f.submit "Update details", class: "btn btn-medium btn-primary" %>
+      <%= f.submit "Update details", class: "btn-square btn-blue btn-square-small" %>
       </section>
     <% end %>
     
@@ -31,9 +31,9 @@
       </ul>
       <hr />
       <p style="display: block">
-        <%= link_to "Add page", new_story_page_path(@story), method: :get, class: "btn btn-large btn-primary" %>&nbsp;
+        <%= link_to "Add page", new_story_page_path(@story), method: :get, class: "btn-square btn-purple" %>&nbsp;
       
-        <%= link_to "Play", story_path(@story), method: :get, class: "btn btn-large btn-success btn-play" %>
+        <%= link_to "Play", story_path(@story), method: :get, class: "btn-square btn-square-large btn-green" %>
       </p>
     </div>
   </div>

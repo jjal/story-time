@@ -16,40 +16,51 @@
  #infovis {
   box-shadow: 2px 2px 5px rgba(0,0,0,.5);
   -webkit-box-shadow:  2px 2px 5px rgba(0,0,0,.5);
--moz-box-shadow:  2px 2px 5px rgba(0,0,0,.5);
+  -moz-box-shadow:  2px 2px 5px rgba(0,0,0,.5);
   border: 0.07em solid #E0E0E0;
   border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 20px;
  }
  
 .story_box {
-  background-color:#fff;
-  padding: 10px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  margin:0px;
+}
+
+.story_card .thumb {
+  
+}
+
+.story_right {
+  margin-left: 0px;
+}
+
+.story_box_left {
+  float:left;
+  height:100%;
+  margin-left: 0px;
 }
 
 .story_author .thumb {
   margin-left: 35px;
 }
+
 .story_thumb {
   padding:0px;
-  width: auto;
   display: inline-block;
-  margin-left: 20px;
+  margin-left: 5px;
+  margin-top: 15px;
+  height:100%;
 }
+
 .story_thumb img {
--webkit-border-radius: 7px;
+  -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   -o-border-radius: 7px;
   border-radius: 7px;
 }
+
 .story_button {
   margin-top:20px;
-}
-
-.story_card {
-  float: left;
-  min-height: 1px;
-  margin-left: 20px;
 }

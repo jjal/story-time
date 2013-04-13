@@ -8,11 +8,11 @@
         <%=  links_form.text_field :text, class: "input-medium", placeholder: "Link Text" %>
         <%=  links_form.label :other_page_id, class: "control-label" %>
         <%=  links_form.select :other_page_id, @story.pages.collect {|p| [ p.title, p.id ] }, {:include_blank => false}, class: "input-medium" %>
-        <%=  links_form.link_to_remove "Remove", class: "btn btn-small btn-danger" %>
+        <%=  links_form.link_to_remove "Remove", class: "btn-square btn-square-small btn-red" %>
         </section>
       </div>
     <% end %>
-   <%= f.link_to_add "Add a link", :links, class: "btn btn-small btn-info" unless @story.pages.empty? %>
+   <%= f.link_to_add "Add a link", :links, class: "btn-square btn-purple btn-square-small" unless @story.pages.empty? %>
    </div>
-  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+  <%= f.submit "Save changes", class: "btn-square btn-square-large btn-blue" %>
 <% end %>

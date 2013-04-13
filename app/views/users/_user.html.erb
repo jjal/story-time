@@ -1,6 +1,8 @@
-<li>
-  <%= avatar_for(user, 52) %>
-  <%= link_to user.name, user %>
+<li class="card user_card">
+  <div class="thumb pull-left">
+    <%=avatar_for(user, 52)%>
+  </div>
+  <h3><%= link_to user.name, user %></h3>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>

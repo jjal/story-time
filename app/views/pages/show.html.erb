@@ -1,5 +1,5 @@
 <% provide(:title, @page.title) %>
- <div class="story_box">
+ <div class="story_box card">
 <section>
     <h1><%= @story.title %></h1>
       <h2>
@@ -40,7 +40,7 @@
 </div>
 <div class="pull-right">
 <% if (signed_in? and user_can_edit(@story)) %>
-  <%= link_to "Edit", edit_story_page_path(@story,@page), class: "btn btn-medium btn-warning" %>
+  <%= link_to edit_story_page_path(@story,@page) do %><div class="btn-round btn-yellow btn-round-small"><i class='icon-edit'></i></div><% end %>
 <% end %>
 </div>
 </div>

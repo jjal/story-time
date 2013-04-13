@@ -1,5 +1,5 @@
 <li class="span3" style="margin-left:5px !important">
-  <div class="thumbnail page_thumbnail" id="divPage<%=page.id%>" >
+  <div class="thumbnail page_thumbnail card" id="divPage<%=page.id%>" >
   
     <h4><%= page.title %></h4>
     <%= image_for_page page, 60 %>
@@ -26,8 +26,8 @@
     <% end %>
     </p>
     <p>
-    <%= link_to "Edit", edit_story_page_path(@story, page), method: :get, class: "btn btn-small btn-warning" %>
-    <%= link_to "Remove", story_page_path(@story, page), method: :delete, class: "btn btn-small btn-danger" %>
+    <%= link_to edit_story_page_path(@story, page) do %><div class="btn-round btn-yellow btn-round-small"><i class='icon-edit'></i></div><% end %>
+    <%= link_to story_page_path(@story, page), method: :delete do %><div class="btn-round btn-red btn-round-small"><i class='icon-trash'></i></div><% end %>
     </p>
     </div>
   </div>
