@@ -1,26 +1,28 @@
 <% provide(:title, @story.title) %>
  <div class="card story_box">
  <section>
-  <h1><%= @story.title %></h1>
-</section>
-    
-<div class="row">
-  <div class="span6 offset3">
- 
-    <section style="text-align:center; margin-bottom:20px">
-    <%= image_for_story @story, 600 %>
-    </section>
-    <p>
-      <%= raw htmlify(@story.description) %>
-    </p>  
- 
-  <div style="text-align:center">
-  <% if !@story.first_page.nil? %>
-        <%= link_to "Begin Story", story_page_path(@story,@story.first_page), class:"btn-square btn-green" %>
-  <% else %>
-        No pages yet!
-  <% end %>
+    <h1><%= @story.title %></h1>
+  </section>
+      
+  <div class="row">
+    <div class="span6 offset3">
+   
+      <section style="text-align:center; margin-bottom:20px">
+      <%= image_for_story @story, 600 %>
+      </section>
+      <p>
+        <%= raw htmlify(@story.description) %>
+      </p>  
+   
+    <div style="text-align:center">
+    <% if !@story.first_page.nil? %>
+          <%= link_to "Begin Story", story_page_path(@story,@story.first_page), class:"btn-square btn-green" %>
+    <% else %>
+          No pages yet!
+    <% end %>
+    </div>
+     </div>
   </div>
-   </div>
+
 </div>
-</div>
+<%= render partial: "/shared/share_this", locals: {name: @story.title, description: @story.description } %>

@@ -495,3 +495,33 @@ p {
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
+
+.tumblr-badge {
+  display: inline-block;
+  position: relative;
+  line-height: 20px;
+  vertical-align: top;
+  margin-top: 1px;
+}
+.fb-like {
+  top: auto;
+}
+.share_well {
+  white-space: nowrap;
+  background: rgba(186,186,186,0.5);
+  color: #6e8597;
+  padding: 10px 20px;
+  font-size: 1.4em;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0px 1px 1px 0px rgba(105,105,105,0.4);
+  box-shadow: inset 0px 1px 1px 0px rgba(105,105,105,0.4);
+  margin-top: 20px;
+  clear: left;
+  float: left;
+  height: 50px;
+  width: 450px;
+}

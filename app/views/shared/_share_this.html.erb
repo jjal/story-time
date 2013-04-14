@@ -1,0 +1,5 @@
+<div class="share_well">
+<div class="tumblr-badge"><a href="http://www.tumblr.com/share/link?url=<%=CGI::escape("http://#{request.host+request.fullpath}")%>&name=<%=CGI::escape(name||=full_title)%>&description=<%=CGI::escape(description||="")%>" 
+title="Tumblr" style="display:inline-block; text-indent:-9999px; overflow:hidden; width:80px; height:20px; background:url('http://platform.tumblr.com/v1/share_1T.png') top left no-repeat transparent;">Tumblr</a></div>
+<div class="fb-like" data-href="<%="http://#{request.host+request.fullpath}"%>" data-send="false" data-width="450" data-show-faces="true" data-font="verdana"></div>
+</div>
