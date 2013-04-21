@@ -415,7 +415,7 @@ p {
 .btn-blue
 {
   &:hover {
-    border-color: #1435AD;
+    border-color: #3F92D2;
   }
 }
 
@@ -508,10 +508,16 @@ p {
 }
 .share_well {
   white-space: nowrap;
-  background: rgba(186,186,186,0.5);
-  color: #6e8597;
   padding: 10px 20px;
   font-size: 1.4em;
+  clear: left;
+  float: left;
+  height: 50px;
+  width: 450px;
+  /*
+  background: rgba(186,186,186,0.5);
+  color: #6e8597;
+  
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -520,8 +526,5 @@ p {
   -webkit-box-shadow: inset 0px 1px 1px 0px rgba(105,105,105,0.4);
   box-shadow: inset 0px 1px 1px 0px rgba(105,105,105,0.4);
   margin-top: 20px;
-  clear: left;
-  float: left;
-  height: 50px;
-  width: 450px;
+  */
 }
