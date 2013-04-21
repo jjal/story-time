@@ -9,6 +9,7 @@ class StoriesController < ApplicationController
       :
         ["status = 1"]
     )
+    @activity = Micropost.get_recent(10)
   end 
   
 	def show

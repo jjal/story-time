@@ -15,4 +15,12 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 600 }
 	validates :user_id, presence: true
 	default_scope order: 'microposts.created_at DESC'
+  
+  def self.get_recent(num)
+    return Micropost.limit(num).find(:all, order: "id DESC")
+  end
+  
+  def content_without_username
+    content.gsub(/^#{self.user.name} just/,'')
+  end
 end
