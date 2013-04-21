@@ -12,6 +12,4 @@
   <%= render @stories %>
 </ul>
 
-<%= will_paginate @stories %><% if(signed_in?) %>
-  <%= link_to "New story", new_story_path, class: "btn-square btn-blue pull-right" %>
-<% end %>
+<%= will_paginate @stories %>
