@@ -314,6 +314,18 @@ p {
   line-height: 1.5em;
 }
 
+blockquote p {
+  font-size: 13px;
+}
+
+.no_content {
+  width: 150px;
+  padding: 5px;
+  text-align: center;
+  margin: 10px 50px;
+  color: #999;
+}
+
 .shadow_select {
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);

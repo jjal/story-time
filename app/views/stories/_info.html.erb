@@ -13,11 +13,15 @@
       </ul>
       </div>
     <div class="tab-pane" id="tab-comments<%= story.id %>">
-      <% story.get_comment_ratings.each do |r| %>
-        <blockquote>
-          <p><%= r.comment %> </p>
-          <small><%= r.user.name %></small>
-        </blockquote>
+      <% if story.get_comment_ratings.count > 0 %>
+        <% story.get_comment_ratings.each do |r| %>
+          <blockquote>
+            <p><%= r.comment %> </p>
+            <small><%= r.user.name %></small>
+          </blockquote>
+        <% end %>
+      <% else %>
+        <div class="no_content">No comments yet</div>
       <% end %>
     </div>
   </div>
