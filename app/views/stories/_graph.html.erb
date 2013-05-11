@@ -165,7 +165,11 @@ function init(){
             });
           });
         } else {
-          delete node.selected;
+          //make it scroll to the page you've clicked on
+          //delete node.selected;
+          var divId = node.id.replace(/^page/g,"#divPage");
+          $.scrollTo($(divId), 800, {offset: -50});
+          highlight(divId);
         }
         //trigger animation to final styles
         fd.fx.animate({
@@ -182,6 +186,9 @@ function init(){
         });
         //append connections information
         $jit.id('inner-details').innerHTML = html + list.join("</li><li>") + "</li></ul>";
+        
+        
+        
       };
     },
     // Change node styles when DOM labels are placed
