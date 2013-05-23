@@ -7,4 +7,9 @@
     | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>
   <% end %>
+  <div class="badge_ribbon">
+  <% user.badges.each do |badge| %>
+    <%= render partial: "badges/badge", locals: { badge: badge } %>
+  <% end %>
+  </div>
 </li>

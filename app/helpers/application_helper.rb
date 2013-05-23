@@ -1,5 +1,6 @@
 module ApplicationHelper
-
+  include BadgesHelper
+  
 	def full_title(page_title)
 		base_title = "Story Time"
 		

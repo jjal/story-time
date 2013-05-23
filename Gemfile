@@ -12,6 +12,7 @@ gem 'aws-s3'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem 'font-awesome-sass-rails'
 gem 'newrelic_rpm'
+gem 'merit'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
