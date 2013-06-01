@@ -1,11 +1,8 @@
 def full_title(page_title)
-  base_title = "KinyeiPOS"
-  if page_title.empty?
-    base_title
-  else
-    "#{base_title} | #{page_title}"
-  end
-end
+		base_title = "Story Time"
+		
+		page_title.empty? ? base_title : "#{base_title} | #{page_title}"
+	end
 
 def sign_in(user)
   visit signin_path

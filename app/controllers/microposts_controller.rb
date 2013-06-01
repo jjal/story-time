@@ -47,6 +47,7 @@ class MicropostsController < ApplicationController
     if @micropost.save
       flash[:success] = "Posted!"
     else
+      flash[:error] = @micropost.errors.empty? ? "Post could not be created" : @micropost.errors.full_messages.to_sentence
       @feed_items = []
     end
     redirect_to :back
@@ -72,7 +73,7 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/1.json
   def destroy
      @micropost.destroy
-    redirect_to root_url
+     redirect_to :back
   end
 	
 	private

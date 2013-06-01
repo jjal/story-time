@@ -1,1 +1,1 @@
-<div class="mini recent_activity"><small><%= link_to micropost.user.name, micropost.user %> <%= time_ago_in_words(micropost.created_at) %> ago<br/><cite><%=raw micropost.content_without_username%></cite></small></div>
+<div class="mini recent_activity"><small><%= link_to micropost.user.try(:name), micropost.user %> <%= time_ago_in_words(micropost.created_at) %> ago<br/><cite><%=raw micropost.content_without_username%></cite></small></div>

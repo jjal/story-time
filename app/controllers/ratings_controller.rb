@@ -45,6 +45,9 @@ class RatingsController < ApplicationController
   # POST /ratings.json
   def create
     @rating = Rating.new(params[:rating])
+    
+    @rating.story_id = params[:story_id] if(@rating.story.nil?)
+    
     if(old_rating = @rating.story.user_rating(current_user))
       old_rating.update_attributes(params[:rating])
       @rating = old_rating
