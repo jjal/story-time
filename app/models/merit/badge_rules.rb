@@ -26,13 +26,13 @@ module Merit
       # grant_on 'users#create', :badge => 'just-registered', :to => :itself
 
       # If it has 10 comments, grant commenter-10 badge
-      grant_on 'pages#update', :badge => 'wordsmith', :level => 1 do |page|
+      grant_on ['pages#update','pages#create'], :badge => 'wordsmith', :level => 1 do |page|
         page.story.user.stories.collect { |s| s.get_word_count }.sum >= 1000
       end
-      grant_on 'pages#update', :badge => 'wordsmith', :level => 2 do |page|
+      grant_on ['pages#update','pages#create'], :badge => 'wordsmith', :level => 2 do |page|
         page.story.user.stories.collect { |s| s.get_word_count }.sum >= 3000
       end
-      grant_on 'pages#update', :badge => 'wordsmith', :level => 3 do |page|
+      grant_on ['pages#update','pages#create'], :badge => 'wordsmith', :level => 3 do |page|
         page.story.user.stories.collect { |s| s.get_word_count }.sum >= 6000
       end
 

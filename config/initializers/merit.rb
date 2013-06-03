@@ -17,12 +17,12 @@ end
 Merit::Badge.create!({
   id: 1,
   name: 'copywriter'
-},
-{
-  id: 1,
+})
+Merit::Badge.create!({
+  id: 2,
   name: 'author'
-},
-{
-  id: 1,
+})
+Merit::Badge.create!({
+  id: 3,
   name: 'wordsmith'
 })
