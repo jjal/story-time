@@ -3,12 +3,13 @@ class StoriesController < ApplicationController
   before_filter :correct_user,   only: [:destroy, :edit, :update]
   
   def index
-    @stories = Story.paginate(page: params[:page], per_page: 10, order: :title, conditions: 
+    @stories = Story.paginate(page: params[:page], per_page: 10, conditions: 
       signed_in? ? 
         (current_user.admin?) ? {} : ["status = 1 or user_id = ?", current_user.id]
       :
         ["status = 1"]
     )
+    @stories = Story.sort_by_rating(@stories)
     @activity = Micropost.get_recent(10)
   end 
   
