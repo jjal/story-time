@@ -16,9 +16,14 @@ end
 # Create application badges (uses https://github.com/norman/ambry)
 # Merit::Badge.create!({
 #   id: 1,
-#   name: 'just-registered'
-# }, {
-#   id: 2,
-#   name: 'best-unicorn',
-#   custom_fields: { category: 'fantasy' }
+#   name: 'copywriter'
 # })
+# Merit::Badge.create!({
+#   id: 2,
+#   name: 'author'
+# })
+# Merit::Badge.create!({
+#   id: 3,
+#   name: 'wordsmith'
+# })
+

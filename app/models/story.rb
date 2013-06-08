@@ -35,7 +35,33 @@ class Story < ActiveRecord::Base
   def init
     self.status = 0
   end
-  
+
+  def self.sort_by_score(stories)
+    
+    stories.sort_by { |s|  s.decayed_weighted_score }.reverse
+
+  end
+
+  def decayed_weighted_score
+    return 0 if ratings.select{|r| !r.score.nil?}.empty?
+    latest = ratings.last.created_at
+    return decay_rating(weighted_average_rating, latest)
+  end
+
+  def decay_rating(rating, time)
+    decay = Math.exp((time.to_datetime - DateTime.now).to_i/40.0)
+    return rating/2.0 + (rating-rating/2.0)*decay
+  end
+
+  def weighted_average_rating
+    get_average_rating * ((ratings.count*4.0)**(1.0/3.0))
+  end
+
+  def rating_deviation
+    avg = get_average_rating 
+    return Math.sqrt(ratings.select {|r| !r.score.nil? }.collect{ |r| (r.score - avg)**2 }.mean||0)
+  end
+
   # just a helper method for the view
   def status_name
     STATUSES[status]
