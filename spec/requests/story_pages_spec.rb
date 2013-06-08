@@ -6,7 +6,7 @@ describe "Story pages" do
 
 	describe "index" do
 
-      describe "pagination" do
+    describe "pagination" do
 
       stories = []
       before(:all) { 30.times { stories << FactoryGirl.create(:story) } }
@@ -53,8 +53,12 @@ describe "Story pages" do
   end
 	
 	describe "edit" do
-    story = Story.first
-    before { visit edit_story_path(story) }
+
+    before {
+      story = Story.first
+      sign_in story.user
+      visit edit_story_path(story)
+    }
 
     it { should have_content("Update #{story.title}") }
     it { should have_content("Edit story") }
