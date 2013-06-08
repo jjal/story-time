@@ -39,7 +39,9 @@ class Story < ActiveRecord::Base
   end
 
   def self.sort_by_score(stories)
-    return stories.sort_by { |s|  s.decayed_weighted_score }.reverse
+    
+    stories.sort_by { |s|  s.decayed_weighted_score }.reverse
+
   end
 
   def decayed_weighted_score
