@@ -13,20 +13,22 @@ describe "User pages" do
       visit users_path
     end
 
-    it { should have_selector('title', text: 'All users') }
-    it { should have_selector('h1',    text: 'All users') }
+    it { should have_selector('title', text: 'Authors') }
+    it { should have_selector('h1',    text: 'Authors') }
 
     describe "pagination" do
 
-      before(:all) { 30.times { FactoryGirl.create(:user) } }
-      after(:all)  { User.delete_all }
+
+      users = []
+      before(:all) { 30.times { users << FactoryGirl.create(:user) } }
+      after(:all) { users.each { |u| u.destroy } }
 
       it { should have_selector('div.pagination') }
 			
 
       it "should list each user" do
-        User.paginate(page: 1).each do |user|
-          page.should have_selector('li', text: user.name)
+        User.paginate(page: 1, order: :name).each do |user|
+          page.should have_selector('a', text: user.name)
         end
       end
     end
@@ -42,7 +44,7 @@ describe "User pages" do
           visit users_path
         end
 
-        it { should have_link('delete', href: user_path(User.first)) }
+        it { should have_link('delete', href: user_path(User.find(:all, order: :name).first)) }
         it "should be able to delete another user" do
           expect { click_link('delete') }.to change(User, :count).by(-1)
         end
@@ -65,13 +67,12 @@ describe "User pages" do
 
     before { visit user_path(user) }
 
-    it { should have_selector('h1',    text: user.name) }
+    it { should have_selector('h3',    text: user.name) }
     it { should have_selector('title', text: user.name) }
 
     describe "microposts" do
       it { should have_content(m1.content) }
       it { should have_content(m2.content) }
-      it { should have_content(user.microposts.count) }
     end
   end
 	
@@ -120,7 +121,6 @@ describe "User pages" do
     describe "page" do
       it { should have_selector('h1',    text: "Update your profile") }
       it { should have_selector('title', text: "Edit user") }
-      it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 
     describe "with invalid information" do

@@ -17,7 +17,7 @@ class Micropost < ActiveRecord::Base
 	default_scope order: 'microposts.created_at DESC'
   
   def self.get_recent(num)
-    return Micropost.limit(num).find(:all, order: "id DESC")
+    return Micropost.includes(:user).limit(num).find(:all, order: "id DESC")
   end
   
   def content_without_username

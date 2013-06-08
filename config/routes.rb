@@ -1,4 +1,4 @@
-KinyeiPos::Application.routes.draw do
+StoryTime::Application.routes.draw do
   
   resources :users do
     member do

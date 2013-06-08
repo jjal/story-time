@@ -36,6 +36,29 @@ ActiveRecord::Schema.define(:version => 20130518194411) do
     t.timestamp "updated_at", :null => false
   end
 
+  create_table "badges_sashes", :force => true do |t|
+    t.integer  "badge_id"
+    t.integer  "sash_id"
+    t.boolean  "notified_user", :default => false
+    t.datetime "created_at"
+  end
+
+  add_index "badges_sashes", ["badge_id", "sash_id"], :name => "index_badges_sashes_on_badge_id_and_sash_id"
+  add_index "badges_sashes", ["badge_id"], :name => "index_badges_sashes_on_badge_id"
+  add_index "badges_sashes", ["sash_id"], :name => "index_badges_sashes_on_sash_id"
+
+  create_table "games", :force => true do |t|
+    t.integer   "user_id"
+    t.integer   "story_id"
+    t.integer   "page_id"
+    t.integer   "fails"
+    t.integer   "wins"
+    t.integer   "pages"
+    t.boolean   "active"
+    t.timestamp "created_at", :null => false
+    t.timestamp "updated_at", :null => false
+  end
+
   create_table "links", :force => true do |t|
     t.integer   "page_id"
     t.integer   "other_page_id"
