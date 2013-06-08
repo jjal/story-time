@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'ruby-debug'
 
 describe "Story pages" do
 
@@ -53,10 +54,12 @@ describe "Story pages" do
   end
 	
 	describe "edit" do
+    let(:story) { Story.first }
 
     before {
-      story = Story.first
+
       sign_in story.user
+
       visit edit_story_path(story)
     }
 
