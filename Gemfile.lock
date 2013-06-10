@@ -129,7 +129,7 @@ GEM
     mime-types (1.23)
     multi_json (1.7.6)
     newrelic_rpm (3.6.3.111)
-    nokogiri (1.5.10-x86-mingw32)
+    nokogiri (1.5.9-x86-mingw32)
     paperclip (3.4.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -251,8 +251,9 @@ DEPENDENCIES
   merit
   nested_form!
   newrelic_rpm
+  nokogiri (= 1.5.9)
   paperclip
-  paperclip-dropbox
+  paperclip-dropbox (>= 1)
   pg (= 0.12.2)
   rails (= 3.2.11)
   rb-fchange (= 0.0.5)

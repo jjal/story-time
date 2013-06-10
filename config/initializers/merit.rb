@@ -1,7 +1,7 @@
 # Use this hook to configure merit parameters
 Merit.setup do |config|
   # Check rules on each request or in background
-  # config.checks_on_each_request = true
+  config.checks_on_each_request = true
 
   # Define ORM. Could be :active_record (default) and :mongo_mapper and :mongoid
   # config.orm = :active_record
@@ -14,11 +14,25 @@ Merit.setup do |config|
 end
 
 # Create application badges (uses https://github.com/norman/ambry)
-# Merit::Badge.create!({
-#   id: 1,
-#   name: 'just-registered'
-# }, {
-#   id: 2,
-#   name: 'best-unicorn',
-#   custom_fields: { category: 'fantasy' }
-# })
+Merit::Badge.create!(
+ 	{
+	   id: 1,
+	   level: 1,
+	   name: 'words',
+	   description: 'Wrote a bunch of words',
+	   custom_fields: {level_name: 'Intern'}
+	})
+Merit::Badge.create!({
+	   id: 2,
+	   level: 2,
+	   name: 'words',
+	   description: 'Wrote a WHOLE bunch of words',
+	   custom_fields: {level_name: 'Writer'}
+	})
+Merit::Badge.create!({
+	   id: 3,
+	   level: 3,
+	   name: 'words',
+	   description: 'This person is a word making machine',
+	   custom_fields: {level_name: 'Wordsmith'}
+	})

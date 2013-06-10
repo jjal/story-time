@@ -25,10 +25,23 @@ module Merit
       # Should be "current_user" after registration for badge to be granted.
       # grant_on 'users#create', :badge => 'just-registered', :to => :itself
 
-      # If it has 10 comments, grant commenter-10 badge
-      # grant_on 'comments#create', :badge => 'commenter', :level => 10 do |comment|
-      #   comment.user.comments.count == 10
-      # end
+      grant_on ['pages#create','pages#update'], :badge => 'words', :level=>1 do |page|
+        deserves = page.story.user.stories.collect{ |s| s.get_word_count }.sum > 2000
+        page.story.user.clear_badges('words',1) if(deserves)
+        deserves
+      end
+
+      grant_on ['pages#create','pages#update'], :badge => 'words', :level=>2 do |page|
+        deserves = page.story.user.stories.collect{ |s| s.get_word_count }.sum > 4000  
+        page.story.user.clear_badges('words',2) if(deserves)
+        deserves
+      end
+
+      grant_on ['pages#create','pages#update'], :badge => 'words', :level=>3 do |page|
+        deserves = page.story.user.stories.collect{ |s| s.get_word_count }.sum > 6000
+        page.story.user.clear_badges('words',3) if(deserves)
+        deserves
+      end
 
       # If it has 5 votes, grant relevant-commenter badge
       # grant_on 'comments#vote', :badge => 'relevant-commenter', :to => :user do |comment|

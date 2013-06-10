@@ -1,13 +1,14 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
+gem 'nokogiri', '1.5.9'
 gem 'bootstrap-sass'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'paperclip'
-gem "paperclip-dropbox"
+gem "paperclip-dropbox", ">= 1"
 gem 'aws-s3'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem 'font-awesome-sass-rails'

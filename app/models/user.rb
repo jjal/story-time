@@ -62,6 +62,15 @@ class User < ActiveRecord::Base
 	def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
+
+  def clear_badges(badge_name, level)
+    badges.each do |b|
+      logger.debug b
+      logger.debug "#{badge_name} - #{level}"
+      logger.debug (b.name == badge_name and b.level <= level)
+      rm_badge(b.id) if(b.name == badge_name and b.level <= level)
+    end
+  end
 	
 	private
 

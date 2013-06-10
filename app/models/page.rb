@@ -4,6 +4,7 @@ class Page < ActiveRecord::Base
   accepts_nested_attributes_for :links, 
                                 :allow_destroy => true, 
                                 :reject_if => :all_blank
+  belongs_to :story
   has_attached_file :image,
     styles: { 
       medium: "200x200",
