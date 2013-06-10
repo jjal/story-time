@@ -1,4 +1,5 @@
 module UsersHelper
+  include StoriesHelper
 
   # Returns the Gravatar (http://gravatar.com/) for the given user.
   def gravatar_for(user, size=nil)
@@ -17,4 +18,9 @@ module UsersHelper
       end
     end
   end
+
+  def random_story_banner(user)
+    story = user.random_story
+    image_for_story(story)
+  end  
 end

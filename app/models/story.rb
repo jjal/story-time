@@ -98,6 +98,10 @@ class Story < ActiveRecord::Base
   def get_comment_ratings
     self.ratings.select { |r| !r.comment.empty? }
   end
+
+  def image_safe(size=nil)
+    image.file? ? image.url((size.nil? || size > 200) ? :large : :medium) : (image_url.blank? ? "/assets/placeholder.png" : story.image_url)
+  end
   
   def get_game_for_user(user)
     return ((game = self.games.find_by_user_id(user.id)) ? game : self.games.create!(user_id: user.id, wins: 0, fails: 0, pages: 0))

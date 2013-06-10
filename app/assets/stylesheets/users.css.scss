@@ -27,8 +27,9 @@
 }
 
 .user_business_card {
-  margin-left: 90px;
-  margin-bottom: 20px;
+  position:absolute;
+  left: 90px;
+  top: 20px;
   vertical-align:middle;
   background: url(/assets/semi-black-bg.png) repeat;
   padding: 20px 25px;
@@ -85,4 +86,8 @@
       color: #ddd;
     }
   }
+}
+
+img.special_image {
+  width:1000px;
 }

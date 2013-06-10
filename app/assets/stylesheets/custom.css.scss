@@ -555,3 +555,9 @@ blockquote p {
    -ms-user-select: none;
    user-select: none;
 }
+.special_image {
+  width: 640px;
+  height: 333px;
+  overflow: hidden;
+  position: relative;
+}

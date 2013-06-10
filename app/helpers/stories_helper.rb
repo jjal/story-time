@@ -19,7 +19,7 @@ module StoriesHelper
   end
   
   def image_for_story(story, size=nil)
-    image_url = story.image.file? ? story.image.url((size.nil? || size > 200) ? :large : :medium) : (story.image_url.blank? ? "/assets/placeholder.png" : story.image_url)
+    image_url = story.image_safe(size)
     image_tag(image_url, alt: story.title, width: size, class: "image")
   end
   
@@ -30,5 +30,4 @@ module StoriesHelper
       return story.title
     end
   end
-  
 end

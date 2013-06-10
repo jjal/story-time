@@ -71,6 +71,11 @@ class User < ActiveRecord::Base
       rm_badge(b.id) if(b.name == badge_name and b.level <= level)
     end
   end
+
+  def random_story
+    return nil if stories.empty?
+    return stories.order("RANDOM()").first
+  end
 	
 	private
 

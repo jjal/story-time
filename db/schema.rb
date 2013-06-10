@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20130518121149) do
 
-  create_table "badges", :force => true do |t|
-    t.string   "type"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "badges_sashes", :force => true do |t|
     t.integer  "badge_id"
     t.integer  "sash_id"
