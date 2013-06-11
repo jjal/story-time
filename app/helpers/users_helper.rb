@@ -21,6 +21,6 @@ module UsersHelper
 
   def random_story_banner(user)
     story = user.random_story
-    image_for_story(story)
+    story.image_safe(nil)
   end  
 end

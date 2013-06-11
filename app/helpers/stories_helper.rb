@@ -18,9 +18,9 @@ module StoriesHelper
     .gsub(/\*([^_]+)\*/,'<strong>\1</strong>') #bold
   end
   
-  def image_for_story(story, size=nil)
+  def image_for_story(story, size=nil, class_name=nil)
     image_url = story.image_safe(size)
-    image_tag(image_url, alt: story.title, width: size, class: "image")
+    image_tag(image_url, alt: story.title, width: size, class: class_name||"image")
   end
   
   def get_story_title(story)

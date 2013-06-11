@@ -88,6 +88,23 @@
   }
 }
 
-img.special_image {
-  width:1000px;
+.user_header canvas{
+  max-width: 150%;
+  width:900px;
+  height:auto;
+  left:-100px;
+  top: -100px;
+  position: absolute;
+}
+
+div.user_header {
+  -webkit-border-top-left-radius: 3px !important;
+  -webkit-border-top-right-radius: 3px !important;
+  -moz-border-radius-topleft: 3px !important;
+  -moz-border-radius-topright: 3px !important;
+  border-top-left-radius: 3px !important;
+  border-top-right-radius: 3px !important;
+  height:330px;
+  overflow: hidden;
+  position: relative;
 }

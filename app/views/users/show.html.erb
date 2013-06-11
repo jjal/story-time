@@ -1,7 +1,7 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <div class="user_header span9 special_image">
-    <%= random_story_banner @user %>
+  <div class="card user_header span9">
+    <canvas id="canvas"></canvas>    
     <section class="user_business_card span6">
       <div class="clearfix">
         <div class="photo">
@@ -14,10 +14,10 @@
       <hr />
       <div class="story_count"><div class="btn-round btn-black btn-round-small pull-left"><%=@user.stories.count%></div>Stories</div>
       <div class="recent_activity"><small>Most recent activity<br/><cite><%=raw @user.microposts.first(order: "id DESC").try(:content)%></cite></small></div>
-    </section> 
-    <div class="sash span3">
+      <div class="sash span3">
       <%= render partial: 'sash', locals: { badges: @user.badges } %>
-    </div>
+      </div>
+    </section> 
   </div>
     <% if (current_user == @user) %>
     <div class="span9 card">
@@ -51,3 +51,24 @@
       <%= will_paginate @microposts %>
     <% end %>
 </div>
+<script>
+  
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+        
+    var img = new Image();
+    img.onload = function () {
+      canvas.width = img.width*3;
+      canvas.height = img.height*3;
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      Pixastic.process(canvas,"blurfast",{amount:7});
+    }
+    img.crossOrigin = "Anonymous";
+    img.src = '<%=random_story_banner(@user)%>';
+    $(document).ready(function(){
+      $("#canvas").animate({ 
+        marginLeft: "+=10px",
+    }, 1000 )
+  });
+
+</script>

@@ -1,3 +1,4 @@
+require "core_ext/array.rb"
 class Story < ActiveRecord::Base
   include StoriesHelper
   
@@ -100,7 +101,7 @@ class Story < ActiveRecord::Base
   end
 
   def image_safe(size=nil)
-    image.file? ? image.url((size.nil? || size > 200) ? :large : :medium) : (image_url.blank? ? "/assets/placeholder.png" : story.image_url)
+    image.file? ? image.url((size.nil? || size > 200) ? :large : :medium) : (image_url.blank? ? "/assets/placeholder.png" : image_url)
   end
   
   def get_game_for_user(user)
