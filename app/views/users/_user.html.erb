@@ -3,7 +3,7 @@
     <%=avatar_for(user, 52)%>
   </div>
   <h3><%= link_to user.name, user %></h3>
-  <div class="sash pull-right">
+  <div class="sash clearfix">
   	<%= render partial: 'sash', locals: { badges: user.badges } %>
 	</div>
   <% if current_user.admin? && !current_user?(user) %>

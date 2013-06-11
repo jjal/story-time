@@ -23,13 +23,15 @@ class UsersController < ApplicationController
   end
 	
 	def create
-    @user = User.new(params[:user])
-    if @user.save
+		#hack to force session load
+		session["init"] = true
+    	@user = User.new(params[:user])
+    	if @user.save
 			sign_in @user
-      flash[:success] = "Welcome to Story Time!"
-      redirect_to @user
-    else
-      render 'new'
+      		flash[:success] = "Welcome to Story Time! "
+      		redirect_to @user
+    	else
+      		render 'new'
     end
   end
 	

@@ -33,6 +33,7 @@
   vertical-align:middle;
   background: url(/assets/semi-black-bg.png) repeat;
   padding: 20px 25px;
+  padding-bottom: 10px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -54,9 +55,9 @@
     float: left;
   }
   img {
-    border-radius: 6px;
+    border-radius: 3px;
     margin-bottom: 15px;
-    border: solid 4px #fff;
+    /*border: solid 4px #fff;*/
     float: left;
     width: 80px;
   }
@@ -68,14 +69,19 @@
     float: left;
     margin-right: 20px;
     vertical-align: middle;
-    height: 60px;
+    height: 40px;
     .btn-round {
       margin: 5px;
       margin-top:-5px;
       padding-left:0px;
       padding-bottom: 0px;
+      padding-top:0px;
     }
     display:inline-block;
+  }
+  .sash {
+    margin-top: 20px;
+    margin-left:0px;
   }
   .recent_activiy {
     float:left;
@@ -98,5 +104,8 @@ div.user_header {
   height:330px;
   overflow: hidden;
   position: relative;
-  padding:0px !important;
+}
+
+.profile_header {
+  margin-top: 20px;
 }

@@ -14,5 +14,5 @@ if (document.location.hash) {
 }
 
 $(document).ready(function() {
-   $("[rel=tooltip]").tooltip();
+   $("[rel=tooltip]").tooltip({container: 'body'});
 });

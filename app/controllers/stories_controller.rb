@@ -12,8 +12,17 @@ class StoriesController < ApplicationController
       :
         ["status = 1"]
     )
-    @stories = Story.sort_by_score(@stories).paginate(page: params[:page], per_page: 10)
+    params[:sort] = "rating" if(!["rating","title","date"].include? (params[:sort]||"").downcase)
 
+    case params[:sort]
+      when "rating"
+        @stories = Story.sort_by_score(@stories)
+      when "title"
+        @stories = @stories.sort_by &:title
+      when "date"
+        @stories = @stories.sort_by(&:created_at).reverse
+    end
+    @stories = @stories.paginate(page: params[:page], per_page: 10)
     @activity = Micropost.get_recent(10)
   end 
   

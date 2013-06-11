@@ -7,11 +7,14 @@
 }
 li.merit {
 	display: inline-block;
-	width: 30px;
-	height: 30px;
+	width: 40px;
+	height: 40px;
 	overflow: hidden;
 	border: 2px solid #fff;
 	border-radius: 100%;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 	margin: 3px;
+}
+.sash ul {
+	margin-bottom: 0px;
 }

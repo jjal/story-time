@@ -28,8 +28,8 @@
   margin:0px;
 }
 
-.story_card .thumb {
-  
+.card.story_card {
+  width:100%;
 }
 
 .story_right {
@@ -68,9 +68,4 @@
 
 .story_button {
   margin-top:20px;
-}
-
-#mini_feed {
-  margin: 20px;
-  margin-top: 0px;
 }
