@@ -97,7 +97,7 @@ class Story < ActiveRecord::Base
   end
   
   def get_comment_ratings
-    self.ratings.select { |r| !r.comment.empty? }
+    self.ratings.select { |r| !r.comment.blank? }
   end
 
   def image_safe(size=nil)

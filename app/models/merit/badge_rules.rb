@@ -38,8 +38,23 @@ module Merit
       end
 
       grant_on ['pages#create','pages#update'], :badge => 'words', :level=>3 do |page|
+        
         deserves = page.story.user.stories.collect{ |s| s.get_word_count }.sum > 6000
         page.story.user.clear_badges('words',3) if(deserves)
+        deserves
+      end
+
+      grant_on ['ratings#create','ratings#update'], :badge => 'heart', :level=>1, :to=>:subject_user do |rating|
+        rating.story.user.stories.reload
+        deserves = rating.story.user.stories.collect { |s| s.ratings.select {|r| r.score == 5 }.count }.sum >= 1
+        rating.story.user.clear_badges('heart',1) if(deserves)
+        deserves
+      end
+
+      grant_on ['ratings#create','ratings#update'], :badge => 'heart', :level=>2, :to=>:subject_user do |rating|
+        rating.story.user.stories.reload
+        deserves = rating.story.user.stories.collect { |s| s.ratings.select {|r| r.score == 5 }.count }.sum >= 10
+        rating.story.user.clear_badges('heart',2) if(deserves)
         deserves
       end
 
