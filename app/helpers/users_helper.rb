@@ -21,6 +21,7 @@ module UsersHelper
 
   def random_story_banner(user)
     story = user.random_story
-    story.image_safe(nil)
+
+    story.nil? ? "/assets/placeholder.png" : story.image_safe(nil)
   end  
 end
