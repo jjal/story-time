@@ -1,6 +1,4 @@
-<% if(signed_in?) %>
-  <div id="new_story_button"><%= link_to "New story", new_story_path, class: "btn-square btn-blue" %></div>
-<% end %>
+
 <div class="sorting_bar">
 	<ul class="nav nav-pills">
 	<% ["Rating","Title","Date"].each do |p| %>
@@ -11,13 +9,18 @@
 	</ul>
 </div>
 <div class="clearfix"></div>
-<div id="mini_feed" class="card pull-right span3">
+<div class="pull-right">
+<div id="mini_feed" class="card span3">
 <h3>Recently</h3>
   <% @activity.each do |post| %>
     <%= render partial: "microposts/mini", locals: { micropost: post } %>
   <% end %>
-</div>
 
+</div>
+<% if(signed_in?) %>
+  <div id="new_story_button"><%= link_to "New story", new_story_path, class: "btn-square btn-blue" %></div>
+<% end %>
+</div>
 <ul class="thumbnails span9">
   <%= render @stories %>
 </ul>
