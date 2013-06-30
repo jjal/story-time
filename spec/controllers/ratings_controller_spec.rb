@@ -24,7 +24,7 @@ describe RatingsController do
   # Rating. As you add validations to Rating, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    { story_id: 1 }
+    { score: 5, story_id: story.id }
   end
   
   # This should return the minimal set of values that should be in the session
@@ -34,7 +34,8 @@ describe RatingsController do
     
   end
 
-  
+  let(:user) { FactoryGirl.create(:user) }
+  let(:story) { user.stories.create! }
   
   describe "GET show" do
 
@@ -64,19 +65,19 @@ describe RatingsController do
   end
 
   describe "POST create" do
-    let(:user) { FactoryGirl.create(:user) }
+    
     before do
       sign_in user
     end
     describe "with valid params" do
       it "creates a new Rating" do
         expect {
-          post :create, {:rating => valid_attributes, :story_id=>1}, valid_session
+          post :create, {:rating => valid_attributes, :story_id=>story.id}, valid_session
         }.to change(Rating, :count).by(1)
       end
 
       it "assigns a newly created rating as @rating" do
-        post :create, {:rating => valid_attributes, :story_id=>1}, valid_session
+        post :create, {:rating => valid_attributes, :story_id=>story.id}, valid_session
         assigns(:rating).should be_a(Rating)
         assigns(:rating).should be_persisted
       end
@@ -86,7 +87,7 @@ describe RatingsController do
       it "assigns a newly created but unsaved rating as @rating" do
         # Trigger the behavior that occurs when invalid params are submitted
         Rating.any_instance.stub(:save).and_return(false)
-        post :create, {:rating => {story_id: 1}, :story_id=>1}, valid_session
+        post :create, {:rating => {story_id: 1}, :story_id=>story.id}, valid_session
         assigns(:rating).should be_a_new(Rating)
       end
 
@@ -102,12 +103,12 @@ describe RatingsController do
         # receives the :update_attributes message with whatever params are
         # submitted in the request.
         Rating.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, {:id => rating.to_param, :rating => {'these' => 'params'}, :story_id=>1}, valid_session
+        put :update, {:id => rating.to_param, :rating => {'these' => 'params'}, :story_id=>story.id}, valid_session
       end
 
       it "assigns the requested rating as @rating" do
         rating = Rating.create! valid_attributes
-        put :update, {:id => rating.to_param, :rating => valid_attributes, :story_id=>1}, valid_session
+        put :update, {:id => rating.to_param, :rating => valid_attributes, :story_id=>story.id}, valid_session
         assigns(:rating).should eq(rating)
       end
     end
@@ -117,7 +118,7 @@ describe RatingsController do
         rating = Rating.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
         Rating.any_instance.stub(:save).and_return(false)
-        put :update, {:id => rating.to_param, :rating => {}, :story_id=>1}, valid_session
+        put :update, {:id => rating.to_param, :rating => {}, :story_id=>story.id}, valid_session
         assigns(:rating).should eq(rating)
       end
     end
