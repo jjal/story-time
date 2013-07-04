@@ -13,4 +13,14 @@ class Page < ActiveRecord::Base
     storage: :dropbox,
     dropbox_credentials: "config/dropbox.yml",
     dropbox_options: { :path => proc { |style| "page_images/#{id}/#{style}/#{image.original_filename}" } }
+
+  NORMAL = 'Normal'
+  ENDING = 'Ending'
+  WIN    = 'Win'
+
+  TYPES = [
+    NORMAL,
+    ENDING,
+    WIN
+  ]
 end

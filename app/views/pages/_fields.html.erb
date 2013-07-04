@@ -13,11 +13,11 @@
 <%= f.label :text %>
 <%= f.text_area :text %>
 
-<div class="form-inline well">
-<h3>Page Options</h3>
-<%= f.check_box :success %>
-<%= f.label :success %>
 
-<%= f.check_box :end %>
-<%= f.label :end %>
+<%= f.label :type %>
+<%= f.select :type, Page::TYPES %>
+
+<div id="message_field">
+<%= f.label :message %>
+<%= f.text_field :message %>
 </div>
