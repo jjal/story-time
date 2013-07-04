@@ -72,11 +72,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def random_story
-    return nil if stories.empty?
-    return stories.order("RANDOM()").first
-  end
-	
 	private
 
 		def create_remember_token

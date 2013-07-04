@@ -19,9 +19,13 @@ module UsersHelper
     end
   end
 
-  def random_story_banner(user)
-    story = user.random_story
+  def random_page_banner(user)
+    image  = nil
+    images = user.stories.collect {|s| s.pages.collect {|p| p.image_safe(nil) } }.flatten + user.stories.collect {|s| s.image_safe(nil) }
+    image = images.select {|i| !i.blank? and !i.match(/placeholder/) }.sample unless images.empty?
 
-    story.nil? ? "/assets/placeholder.png" : story.image_safe(nil)
+    image.nil? ? "/assets/placeholder.png" : image
   end  
+
+
 end
