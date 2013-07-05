@@ -14,8 +14,19 @@ class Page < ActiveRecord::Base
     dropbox_credentials: "config/dropbox.yml",
     dropbox_options: { :path => proc { |style| "page_images/#{id}/#{style}/#{image.original_filename}" } }
 
+  NORMAL = 'Normal'
+  ENDING = 'Ending'
+  WIN    = 'Win'
+
+  TYPES = [
+    NORMAL,
+    ENDING,
+    WIN
+  ]
+
   def image_safe(size=nil)
     image.file? ? image.url((size.nil? || size > 200) ? :large : :medium) : (image_url.blank? ? "/assets/placeholder.png" : image_url)
   end
   
+
 end
