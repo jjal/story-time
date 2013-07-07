@@ -1,0 +1,2 @@
+class NormalPage < Page
+end

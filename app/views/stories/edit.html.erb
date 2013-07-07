@@ -27,7 +27,9 @@
     <div class="span9" style="margin-left:-10px">
       <h3>Pages</h3>
       <ul class="thumbnails">
-        <%= render @story.pages.find(:all, order: "id") %>
+        <% @story.pages.find(:all, order: "id").each do |page| %>
+        <%= render partial: "pages/page", locals: { page: page } %>
+        <% end %>
       </ul>
       <hr />
       <p style="display: block">

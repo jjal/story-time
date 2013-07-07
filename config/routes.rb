@@ -13,8 +13,13 @@ StoryTime::Application.routes.draw do
     resources :pages do 
       resources :links
     end
+    resources :normal_pages, :controller => 'pages'
+    resources :end_pages, :controller => 'pages'
+    resources :win_pages, :controller => 'pages'
     resources :ratings
   end
+
+
 
   root to: 'stories#index'
 	

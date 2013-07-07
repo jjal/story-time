@@ -1,5 +1,5 @@
 class Page < ActiveRecord::Base
-  attr_accessible :end, :id, :image, :points, :story_id, :success, :text, :title, :links_attributes, :links, :image_url
+  attr_accessible :end, :id, :image, :points, :story_id, :success, :text, :title, :links_attributes, :links, :image_url, :message
   has_many :links, dependent: :destroy
   accepts_nested_attributes_for :links, 
                                 :allow_destroy => true, 
@@ -14,15 +14,15 @@ class Page < ActiveRecord::Base
     dropbox_credentials: "config/dropbox.yml",
     dropbox_options: { :path => proc { |style| "page_images/#{id}/#{style}/#{image.original_filename}" } }
 
-  NORMAL = 'Normal'
-  ENDING = 'Ending'
-  WIN    = 'Win'
+  NORMAL = :NormalPage
+  ENDING = :EndPage
+  WIN    = :WinPage
 
-  TYPES = [
-    NORMAL,
-    ENDING,
-    WIN
-  ]
+  TYPES = {
+    NORMAL => 'Normal',
+    WIN => 'Win',
+    ENDING => 'Other ending'
+  }
 
   def image_safe(size=nil)
     image.file? ? image.url((size.nil? || size > 200) ? :large : :medium) : (image_url.blank? ? "/assets/placeholder.png" : image_url)

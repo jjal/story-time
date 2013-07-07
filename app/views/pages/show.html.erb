@@ -26,8 +26,8 @@
 <% if(@page.end? or @page.success?) %>
   <h1>The End</h1>
   <% if(@page.success?) %>
-    <h1>You won you're amazing.</h1>
-    <div class="pull-left well well-small">
+    <h1><%= end_message_for(@page) %></h1>
+    <div class="pull-left well well-small rating-well">
     <% if(signed_in?) %>
       <h2>Rate this story</h2>
         <%= render @story.user_rating(current_user)%>

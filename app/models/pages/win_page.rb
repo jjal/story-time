@@ -1,0 +1,2 @@
+class WinPage < EndPage
+end
