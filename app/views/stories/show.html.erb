@@ -3,7 +3,8 @@
  <section>
     <h1><%= @story.title %></h1>
   </section>
-      
+ <div class="page_placeholder">
+ <div class="page_inner">
   <div class="row">
     <div class="span6 offset3">
    
@@ -23,6 +24,10 @@
     </div>
      </div>
   </div>
-
+  </div>
+</div>
+  <script>
+    bookify($(".page_placeholder").get(0));
+  </script>
 </div>
 <%= render partial: "/shared/share_this", locals: {name: @story.title, description: @story.description } %>

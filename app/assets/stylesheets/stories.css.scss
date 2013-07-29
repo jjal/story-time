@@ -26,6 +26,7 @@
  
 .story_box {
   margin:0px;
+  overflow: hidden;
 }
 
 .card.story_card {
@@ -68,4 +69,15 @@
 
 .story_button {
   margin-top:20px;
+}
+
+.page_placeholder {
+  width: 2200px;
+}
+
+.page_inner {
+  margin-right: 20px;
+  position: relative;
+  height: 100%;
+  display: inline-block;
 }
