@@ -15,19 +15,32 @@ if (document.location.hash) {
 
 $(document).ready(function() {
    $("[rel=tooltip]").tooltip({container: 'body'});
+
 });
 
 function bookify(elem)
 {
-	elem.switchPage = function(href) {
-		$(".page_inner").each(function(){$(this).slideOut();});
-		$.get(href, function(data) {
+	window.onhashchange = function ()
+   	{
+   		//dirty dirty hardcoded route
+   		var pageRoute = window.location.href.replace(/\#([0-9]+)$/,"/pages/$1");
+   		
+   		if(pageRoute.indexOf("pages") != -1) //it is a page request
+   		{
+   			$(".page_inner").each(function(){$(this).slideOut();});
+   			
 			$('<div/>', {class: 'page_inner', style: 'left:1000px'})
 				.appendTo(elem)
-				.html(data)
-				.slideIn();
-			_replacePageLinks(elem);
-		});
+				.load(pageRoute, function() {
+					_replacePageLinks(elem);
+					$(this).slideIn();
+				});
+		} else {
+			window.location = window.location.href;
+		}
+	};
+	elem.switchPage = function(href) {
+		
 
 	};
 	_replacePageLinks(elem);
@@ -41,12 +54,12 @@ function _replacePageLinks(elem)
 		if(!match)
 			return; 
 		e.href = "#"+match[1];
-		$(e).click(function (event) { 
-			event.preventDefault();
-			window.location.hash = this.hash;
-			elem.switchPage(href); 
-			return false; 
-		});
+		// $(e).click(function (event) { 
+		// 	event.preventDefault();
+		// 	window.location.hash = this.hash;
+		// 	elem.switchPage(href); 
+		// 	return false; 
+		//});
 	});
 }
 
@@ -58,7 +71,7 @@ function _replacePageLinks(elem)
 				duration: 500,
 				"complete": function() { $(this).remove(); }
 			}
-		).removeClass("popped");
+		);//.removeClass("popped");
        	return $(this);
    	};
 	

@@ -27,6 +27,7 @@
 .story_box {
   margin:0px;
   overflow: hidden;
+  min-height: 700px;
 }
 
 .card.story_card {
@@ -80,4 +81,8 @@
   position: relative;
   height: 100%;
   display: inline-block;
+  float:right;
+}
+.page_inner.popped {
+  float:none;
 }
