@@ -6,13 +6,13 @@
  <div class="page_placeholder">
  <div class="page_inner popped">
   <div class="row">
-    <div class="span6 offset3">
+    <div class="span8 offset2">
    
       <section style="text-align:center; margin-bottom:20px">
       <%= image_for_story @story, 600 %>
       </section>
       <p>
-        <%= raw htmlify(@story.description) %>
+        <%= raw content_filter(@story.description) %>
       </p>  
    
     <div style="text-align:center">

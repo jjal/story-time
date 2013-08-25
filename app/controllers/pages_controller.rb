@@ -36,8 +36,8 @@ class PagesController < ApplicationController
 	
 	def update
     if @page.update_attributes(params[:page])
-      logger.debug "************pages merit************************"
-      logger.debug @page.story.user.stories.collect{ |s| s.get_word_count }.sum
+      #logger.debug "************pages merit************************"
+      #logger.debug @page.story.user.stories.collect{ |s| s.get_word_count }.sum
 			flash[:success] = "Page updated"
       redirect_to edit_story_path(@story)
     else

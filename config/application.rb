@@ -61,6 +61,7 @@ module StoryTime
 
     config.assets.initialize_on_precompile = false
 
-    config.autoload_paths += Dir["#{config.root}/app/models/**/"]
+    config.autoload_paths += Dir["#{config.root}/app/models/**/","#{config.root}/lib/**/"]
+
   end
 end

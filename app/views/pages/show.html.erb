@@ -5,12 +5,12 @@
   </section>
   
   <div class="row">
-    <div class="span6 offset3">
+    <div class="span8 offset2">
       <section style="text-align:center; margin-bottom:20px">
       <%= image_for_page @page %>
       </section>
       <p>
-      <%= raw htmlify(content_filter(@page.text)) %>
+      <%= raw content_filter(@page.text) %>
       </p>
       <section class="link_section">
       <ul class="unstyled">

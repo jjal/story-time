@@ -4,6 +4,15 @@ module PagesHelper
     return image_tag(image_url, alt: page.title, width: size, class: "avatar") unless image_url.nil?
   end
 
+  def content_filter(text)
+    filters = ["Stylify", "Youtube"]
+    filters.each do |f|
+      filter = Object.const_get("HTMLFilter_"+f).new
+      text = filter.process(text)
+    end
+    return text
+  end
+
   def end_message_for(page)
   	page.message.blank? ? 
   		case page.type
