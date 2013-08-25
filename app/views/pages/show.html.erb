@@ -10,7 +10,7 @@
       <%= image_for_page @page %>
       </section>
       <p>
-      <%= raw htmlify(@page.text) %>
+      <%= raw htmlify(content_filter(@page.text)) %>
       </p>
       <section class="link_section">
       <ul class="unstyled">
