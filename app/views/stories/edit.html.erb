@@ -8,19 +8,19 @@
     <%= form_for(@story) do |f| %>
       <%= render "fields", f: f %>
       <section>
-      <%= f.submit "Update details", class: "btn-square btn-blue btn-square-small" %>
+      <%= f.submit "Update details", class: "btn-square btn-blue btn-square-large" %>
       </section>
     <% end %>
     
     <% if @story.status == Story::PUBLISHED %>
       <%= form_for @story, :method => :put do |f| %>
         <%= f.hidden_field :status, :value => 0 %>
-        <%= f.submit "Unpublish Story", class: "btn btn-large btn-block" %>
+        <%= f.submit "Unpublish Story", class: "btn-square btn-blue btn-square-large" %>
       <% end %>
     <% else %>
       <%= form_for @story, :method => :put do |f| %>
         <%= f.hidden_field :status, :value => 1 %>
-        <%= f.submit "Publish Story", class: "btn btn-large btn-danger btn-block" %>
+        <%= f.submit "Publish Story", class: "btn-square btn-red btn-square-large" %>
       <% end %>
     <% end %>
         

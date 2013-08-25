@@ -17,7 +17,7 @@
 <%= f.label :type, "Page type" %>
 <% Page::TYPES.each do |t,n| %>
   <br><%= radio_button_tag :type, t, @page.type == t.to_s || (t.casecmp(Page::NORMAL)==0 && @page.type.blank?), {:class => "rad_page_type rad_page_type_#{t}"} %>
-  <%= n.humanize %> - <%=@page.type%> = <%=t%> <%=@page.type == t.to_s%>
+  <%= n.humanize %>
 <% end %>
 </div>
 
@@ -39,5 +39,3 @@
 	});
 	$(".rad_page_type").change();
 </script>
-130701LOT
-130704MFG
