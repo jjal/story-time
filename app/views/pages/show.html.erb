@@ -20,10 +20,10 @@
     </div>
   </div>
   <div class="row">
-  <% if(@page.end? or @page.success?) %>
+  <% if(@page.is_a?(EndPage)) %>
     <h1>The End</h1>
-    <% if(@page.success?) %>
-      <h1><%= end_message_for(@page) %></h1>
+    <h1><%= end_message_for(@page) %></h1>
+    <% if(@page.is_a?(WinPage)) %>
       <div class="pull-left well well-small rating-well">
       <% if(signed_in?) %>
         <h2>Rate this story</h2>

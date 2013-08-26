@@ -8,7 +8,7 @@
       <%= raw truncate(h(page.text), :length => 80,  :separator => " ", :omission => "...")%>
       </p>
     <p>
-    <% if(!page.end?) %>
+    <% if(!page.is_a?(EndPage)) %>
     
     Links to:<br/>
     <small>
@@ -20,14 +20,17 @@
     
     <% else %>
     <span class="label label-important">End</span>
-      <% if(page.success?) %>
+      <% if(page.is_a?(WinPage)) %>
         <span class="label label-info">Success</span>
       <% end %>
     <% end %>
+    <% if(page.is_a?(StartPage)) %>
+        <span class="label label-success">Start</span>
+      <% end %>
     </p>
     <p>
     <div class="btn-round btn-yellow btn-round-small thin-margin"><%= link_to edit_story_page_path(@story, page) do %><i class='icon-edit'></i><% end %></div>
-    <div class="btn-round btn-green btn-round-small thin-margin"><%= link_to story_page_path(@story, page) do %><i class='icon-play'></i><% end %></div>
+    <div class="btn-round btn-green btn-round-small thin-margin"><%= link_to present_story_page_path(@story, page) do %><i class='icon-play'></i><% end %></div>
     <div class="btn-round btn-red btn-round-small thin-margin"><%= link_to story_page_path(@story, page), method: :delete, confirm: "This will delete the page forever are you sure?" do %><i class='icon-trash'></i><% end %></div>
     </p>
     </div>

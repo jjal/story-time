@@ -4,9 +4,9 @@ class Game < ActiveRecord::Base
   belongs_to :user
   
   def visit_page (page)
-    if (page.success?)
+    if (page.is_a?(WinPage))
       self.wins += 1
-    elsif (page.end?)
+    elsif (page.is_a?(EndPage))
       self.fails += 1
     end
     

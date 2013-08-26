@@ -1,0 +1,2 @@
+class StartPage < Page
+end

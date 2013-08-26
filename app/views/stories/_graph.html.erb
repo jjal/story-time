@@ -43,8 +43,8 @@ var json = [
     <% end %>
     ], 
     "data": {
-      "$color": "<%= page.success ? "#006ECC" : page.end ? "#F06060" : "#F9A834" %>", 
-      "$type": "<%= (page.end or page.success) ? "square" : "circle" %>"
+      "$color": "<%= page.is_a?(StartPage) ? "#00CF00" : page.is_a?(WinPage) ? "#006ECC" : page.is_a?(EndPage) ? "#F06060" : "#F9A834" %>", 
+      "$type": "<%= page.is_a?(StartPage) ? "triangle" : page.is_a?(EndPage) ? "square" : "circle" %>"
     }, 
     "id": "<%= "page#{page.id}"%>", 
     "name": "<%= "#{page.title}"%>"

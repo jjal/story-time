@@ -25,6 +25,9 @@ class PagesController < ApplicationController
 	def create
     @story = Story.find(params[:story_id])
 		@page = @story.pages.build(params[:page])
+    if(@story.pages.count == 0)
+      @page.type = 'StartPage'
+    end
     if @page.save
 			flash[:success] = "Page created!"
       current_user.microposts.create({content: "#{current_user.name} just added a new page to <a href='#{story_path(@story)}'>#{@story.title}</a>" })

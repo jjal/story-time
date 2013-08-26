@@ -1,6 +1,9 @@
 <% provide(:title, "Edit story") %> 
  
 <h1>Update <%=@story.title%></h1>
+<% if(@story.status != Story::PUBLISHED) %>
+  <h2>(Private draft)</h2>
+<% end %>
 <%= render "graph" %>
 <div class="row">
   <div class="span8 offset2">

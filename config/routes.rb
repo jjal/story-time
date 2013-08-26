@@ -16,10 +16,11 @@ StoryTime::Application.routes.draw do
     resources :normal_pages, :controller => 'pages'
     resources :end_pages, :controller => 'pages'
     resources :win_pages, :controller => 'pages'
+    resources :start_pages, :controller => 'pages'
     resources :ratings
   end
-  match '/stories/:story_id#:id', to: 'story#show', as: 'story_page'
-  match '/stories/:story_id/pages/:id', to: 'pages#show', as: 'story_page_raw'
+  match '/stories/:story_id#:id', to: 'story#show', as: 'present_story_page'
+  
 
 
   root to: 'stories#index'

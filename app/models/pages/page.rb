@@ -17,9 +17,11 @@ class Page < ActiveRecord::Base
   NORMAL = :NormalPage
   ENDING = :EndPage
   WIN    = :WinPage
+  START  = :StartPage
 
   TYPES = {
     NORMAL => 'Normal',
+    START => 'Start',
     WIN => 'Win',
     ENDING => 'Other ending'
   }
@@ -28,5 +30,9 @@ class Page < ActiveRecord::Base
     image.file? ? image.url((size.nil? || size > 200) ? :large : :medium) : (image_url.blank? ? "/assets/placeholder.png" : image_url)
   end
   
+  def self.attributes_protected_by_default
+    # default is ["id","type"]
+    ["id"]
+  end
 
 end
