@@ -18,7 +18,8 @@ StoryTime::Application.routes.draw do
     resources :win_pages, :controller => 'pages'
     resources :ratings
   end
-
+  match '/stories/:story_id#:id', to: 'story#show', as: 'story_page'
+  match '/stories/:story_id/pages/:id', to: 'pages#show', as: 'story_page_raw'
 
 
   root to: 'stories#index'

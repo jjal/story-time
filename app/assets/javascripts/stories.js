@@ -1,6 +1,7 @@
 // highlight and fade background on named anchors
 // requires jquery.color.js http://plugins.jquery.com/project/color
-function highlight(elemId){
+function highlight(elemId) 
+{
     var elem = $(elemId);
     //alert(elem.parent());
     elem.css("backgroundColor", "#ffffff"); // hack for Safari
@@ -9,13 +10,14 @@ function highlight(elemId){
     setTimeout(function(){$(elemId).animate({ backgroundColor: "#ffffff" }, 3000)},1000);
 }
    
-if (document.location.hash) {
+if (document.location.hash) 
+{
     highlight(document.location.hash);
 }
 
-$(document).ready(function() {
+$(document).ready(function() 
+{
    $("[rel=tooltip]").tooltip({container: 'body'});
-
 });
 
 function bookify(elem)
@@ -40,10 +42,12 @@ function bookify(elem)
 		}
 	};
 	elem.switchPage = function(href) {
-		
-
 	};
 	_replacePageLinks(elem);
+	if(window.location.href.indexOf("pages") != -1 || window.location.href.indexOf("#") != -1) //it is a page request
+   	{
+		window.onhashchange();
+	}
 }
 
 function _replacePageLinks(elem)

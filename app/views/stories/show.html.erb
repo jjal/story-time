@@ -27,7 +27,9 @@
   </div>
 </div>
   <script>
-    bookify($(".page_placeholder").get(0));
+    $(document).ready( function() {
+      bookify($(".page_placeholder").get(0));
+    });
   </script>
 </div>
 <%= render partial: "/shared/share_this", locals: {name: @story.title, description: @story.description } %>
