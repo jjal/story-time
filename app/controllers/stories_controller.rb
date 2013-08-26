@@ -46,7 +46,6 @@ class StoriesController < ApplicationController
     @story = current_user.stories.build(params[:story])
     if @story.save
       flash[:success] = "Cool you created a story. Now add some pages."
-      current_user.microposts.create({content: "#{current_user.name} just created a new story, <a href='#{story_path(@story)}'>'#{@story.title}'</a>" })
       redirect_to edit_story_path(@story)
     else
       render 'new'
@@ -55,10 +54,13 @@ class StoriesController < ApplicationController
   
   def update
     @story = Story.find(params[:id])
+    if(@story.status != Story::PUBLISHED and !params[:story][:status].nil? and params[:story][:status].to_i == Story::PUBLISHED)
+      current_user.microposts.create({content: "#{current_user.name} just published a new story, <a href='#{story_path(@story)}'>'#{@story.title}'</a>" })
+    end
     if @story.update_attributes(params[:story])
       flash[:success] = "Story updated"
     end
-    render 'edit'
+    redirect_to edit_story_path(@story)
   end
    
   def destroy

@@ -30,7 +30,9 @@ class PagesController < ApplicationController
     end
     if @page.save
 			flash[:success] = "Page created!"
-      current_user.microposts.create({content: "#{current_user.name} just added a new page to <a href='#{story_path(@story)}'>#{@story.title}</a>" })
+       if(@story.status == Story::PUBLISHED)
+        current_user.microposts.create({content: "#{current_user.name} just added a new page to <a href='#{story_path(@story)}'>#{@story.title}</a>" })
+      end
       redirect_to edit_story_path(@story)
     else
       render 'new'

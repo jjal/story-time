@@ -23,6 +23,7 @@
     <% else %>
       <%= form_for @story, :method => :put do |f| %>
         <%= f.hidden_field :status, :value => 1 %>
+        <%= f.hidden_field :id, :value => @story.id %>
         <%= f.submit "Publish Story", class: "btn-square btn-red btn-square-large" %>
       <% end %>
     <% end %>

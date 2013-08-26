@@ -34,7 +34,7 @@ class Story < ActiveRecord::Base
       :message => "{{value}} must be in #{STATUSES.values.join ','}"
 
   def init
-    self.status = 0
+    self.status = 0 if self.status.nil?
   end
 
   def self.sort_by_score(stories)
