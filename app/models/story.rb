@@ -85,7 +85,11 @@ class Story < ActiveRecord::Base
   end
   
   def first_page
-    self.pages.find(:first, conditions: {type: 'StartPage'})
+    p = self.pages.find(:first, conditions: {type: 'StartPage'})
+    if(p.nil?)
+      p = self.pages.find(:first, order: "id")
+    end
+    return p
   end
   
   def get_average_rating
