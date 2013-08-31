@@ -10,7 +10,7 @@
         <% end %>
         <%= links_form.text_field :text, class: "input-medium", placeholder: "Link Text" %>
         <%= links_form.label :other_page_id, class: "control-label" %>
-        <%= links_form.select :other_page_id, @story.pages.collect {|p| [ p.title, p.id ] }, {:include_blank => false}, class: "input-medium" %>
+        <%= links_form.select :other_page_id, @story.pages.collect {|p| [ p.title, p.id ] }, {prompt: "New page..."}, class: "input-medium" %>
         <%= links_form.link_to_remove "Remove", class: "btn-square btn-square-small btn-red" %>
         </section>
       </div>

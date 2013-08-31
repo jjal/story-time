@@ -47,6 +47,6 @@ Merit::Badge.create!({
 	   id: 5,
 	   level: 2,
 	   name: 'heart',
-	   description: 'Beloved by the masses. More than 10 perfect ratings amongst all stories.',
+	   description: 'Beloved of the masses. More than 10 perfect ratings amongst all stories.',
 	   custom_fields: {level_name: 'Populist'}
 	})

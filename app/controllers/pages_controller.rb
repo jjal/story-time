@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   before_filter :signed_in_user, only: [:edit, :update, :new, :create]
   before_filter :correct_user,   only: [:destroy, :edit, :update]
   before_filter :correct_story, only: [:destroy, :edit, :update, :show]
-  
+  before_filter :create_new_link_pages, only: [:update, :create]
+
   include StoriesHelper
   def index
     @story = Story.find(params[:story_id])
@@ -38,7 +39,8 @@ class PagesController < ApplicationController
       render 'new'
     end
   end
-	
+
+  
 	def update
     if @page.update_attributes(params[:page])
       #logger.debug "************pages merit************************"
@@ -56,7 +58,8 @@ class PagesController < ApplicationController
     redirect_to edit_story_path(@story)
   end
   
-    private
+  private
+    
     def correct_story 
       @story = Story.find_by_id(params[:story_id])
       @page = @story.pages.find_by_id(params[:id])
@@ -72,5 +75,22 @@ class PagesController < ApplicationController
         flash[:error] = "You need to be the owner of that page to modify it."
         redirect_to root_url if story.empty?
       end
+    end
+
+    def create_new_link_pages
+      return unless params[:page].has_key? :links_attributes
+
+      params[:page][:links_attributes].each do |key, link| 
+        if(link[:other_page_id].empty? and link[:_destroy] != "1")
+          p = create_new_page_from_link(link)
+          params[:page][:links_attributes][key][:other_page_id] = p.id
+        end
+      end
+    end
+
+    def create_new_page_from_link(link)
+      page = @story.pages.build(title: link[:text])
+      page.save!
+      return page
     end
 end

@@ -5,6 +5,10 @@ class Page < ActiveRecord::Base
                                 :allow_destroy => true, 
                                 :reject_if => :all_blank
   belongs_to :story
+   after_initialize :init
+
+    
+
   has_attached_file :image,
     styles: { 
       medium: "200x200",
@@ -34,5 +38,7 @@ class Page < ActiveRecord::Base
     # default is ["id","type"]
     ["id"]
   end
-
+  def init
+      self.text  ||= ""
+  end
 end
