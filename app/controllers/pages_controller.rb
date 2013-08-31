@@ -24,7 +24,7 @@ class PagesController < ApplicationController
   end
 	
 	def create
-    @story = Story.find(params[:story_id])
+    @story = Story.find_by_id(params[:story_id])
 		@page = @story.pages.build(params[:page])
     if(@story.pages.count == 0)
       @page.type = 'StartPage'
@@ -89,6 +89,7 @@ class PagesController < ApplicationController
     end
 
     def create_new_page_from_link(link)
+      @story = Story.find_by_id(params[:story_id])
       page = @story.pages.build(title: link[:text])
       page.save!
       return page
