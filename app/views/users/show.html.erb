@@ -28,12 +28,12 @@
     </div>
     <% end %>
   
-    <% if @user.stories.any? %>
+    <% if @stories.any? %>
     <div class="card span9 profile_header">
       <h3>Stories</h3>
     </div>
       <ul class="thumbnails span9 card chromeless">
-        <% @user.stories.each do |story| %>
+        <% @stories.each do |story| %>
           <%= render partial: "/stories/story", locals: { story: story, hideAuthor: true } %>
         <%end%>
       </ul>
@@ -46,7 +46,7 @@
       </div>
     <% end %>
   
-    <% if @user.microposts.any? %>
+    <% if @microposts.any? %>
     <div class="card span9 profile_header">
       <h3>Activity</h3>
     </div>
@@ -79,7 +79,8 @@
         canvas.width = bounds.width;
         canvas.height = bounds.height;
         ctx.drawImage(result,0,0);
-        tiltShift(canvas);
+        //tiltShift(canvas);
+        plainblur(canvas);
       });
     }
     

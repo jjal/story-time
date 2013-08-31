@@ -31,6 +31,17 @@ function tiltShift(c)
     }); 
   });
 }
+function plainblur(c)
+{
+  //start out by adding some pop
+  var ctx = c.getContext("2d");
+  Pixastic.process(canvas, "hsl", {hue:0,saturation:60,lightness:0, 'leaveDOM': true}, function(result) { ctx.drawImage(result,0,0);
+    Pixastic.process(canvas, "brightness", {brightness:10,contrast:0.4, 'leaveDOM': true}, function(result) { ctx.drawImage(result,0,0);
+      //blur the image 
+      Pixastic.process(c,"blurfast",{amount:1, 'leaveDOM': true},  function(result) { ctx.drawImage(result,0,0); });
+    }); 
+  });
+}
 function getBlurWeight(i,w,h,u,v)
 {
   var y = Math.floor(i / 4 / w);

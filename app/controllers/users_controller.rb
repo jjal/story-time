@@ -11,12 +11,15 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@microposts = @user.microposts.paginate(page: params[:page])
+		@stories = (signed_in? and (current_user?(@user) or current_user.admin?)) ? 
+			@user.stories : 
+			@user.stories.find(:all, conditions: {status: Story::PUBLISHED})
 	end
-	
+
 	def edit
 		#defined in correct_user
     #@user = User.find(params[:id])
-  end
+  	end
 	
 	def new
 		@user = User.new
@@ -55,7 +58,7 @@ class UsersController < ApplicationController
 	
 	private
 		
-		def correct_user
+	def correct_user
       @user = User.find(params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
