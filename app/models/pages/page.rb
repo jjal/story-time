@@ -33,6 +33,10 @@ class Page < ActiveRecord::Base
   def image_safe(size=nil)
     image.file? ? image.url((size.nil? || size > 200) ? :large : :medium) : (image_url.blank? ? "/assets/placeholder.png" : image_url)
   end
+
+  def word_count
+    text.scan(/\w+/).size
+  end
   
   def self.attributes_protected_by_default
     # default is ["id","type"]

@@ -11,8 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require bootstrap
+//= require wice_grid
 //= require_tree .
 
 Number.prototype.clamp = function(min, max) {

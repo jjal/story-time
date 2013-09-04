@@ -21,6 +21,7 @@ StoryTime::Application.routes.draw do
   end
   match '/stories/:story_id#:id', to: 'story#show', as: 'present_story_page'
   
+  match '/reports/activity', to: 'reports#recent_activity'
 
 
   root to: 'stories#index'

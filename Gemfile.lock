@@ -43,7 +43,7 @@ GEM
       mime-types
       xml-simple
     bcrypt-ruby (3.0.1-x86-mingw32)
-    bootstrap-sass (2.3.2.1)
+    bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.6)
       will_paginate
@@ -84,7 +84,7 @@ GEM
     dropbox-sdk (1.6.1)
       json
     erubis (2.7.0)
-    execjs (2.0.0)
+    execjs (2.0.1)
     factory_girl (2.3.2)
       activesupport
     factory_girl_rails (1.4.0)
@@ -110,10 +110,13 @@ GEM
     hike (1.2.3)
     i18n (0.6.5)
     journey (1.0.4)
-    jquery-rails (3.0.4)
+    jquery-rails (2.3.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
+    kaminari (0.14.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     listen (1.3.0)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -126,7 +129,7 @@ GEM
     merit (1.6.1)
       ambry (~> 0.3.0)
     method_source (0.8.2)
-    mime-types (1.24)
+    mime-types (1.25)
     multi_json (1.7.9)
     multi_test (0.0.2)
     newrelic_rpm (3.6.6.147)
@@ -199,10 +202,10 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    selenium-webdriver (2.35.0)
+    selenium-webdriver (2.35.1)
       childprocess (>= 0.2.5)
       multi_json (~> 1.0)
-      rubyzip
+      rubyzip (< 1.0.0)
       websocket (~> 1.0.4)
     slop (3.4.6)
     spork (0.9.0-x86-mingw32)
@@ -223,6 +226,8 @@ GEM
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
     websocket (1.0.7)
+    wice_grid (3.2.1)
+      kaminari (>= 0.13.0)
     will_paginate (3.0.3)
     win32-process (0.7.2)
       ffi (>= 1.0.0)
@@ -248,7 +253,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   font-awesome-sass-rails
   guard-rspec (= 0.5.5)
-  jquery-rails
+  jquery-rails (~> 2.3.0)
   merit
   nested_form!
   newrelic_rpm
@@ -265,5 +270,6 @@ DEPENDENCIES
   spork (= 0.9.0)
   sqlite3 (= 1.3.5)
   uglifier (= 1.2.3)
+  wice_grid (= 3.2.1)
   will_paginate (= 3.0.3)
   win32console

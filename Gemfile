@@ -14,6 +14,7 @@ gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
 gem 'font-awesome-sass-rails'
 gem 'newrelic_rpm'
 gem 'merit'
+gem "wice_grid", '3.2.1'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -54,7 +55,7 @@ group :assets do
   gem 'uglifier', '1.2.3'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.3.0'
 
 
 

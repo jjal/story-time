@@ -73,7 +73,7 @@ class Story < ActiveRecord::Base
   end
   
   def get_word_count
-    self.pages.collect { |p| p.text.scan(/\w+/).size }.sum
+    self.pages.collect { |p| p.word_count }.sum
   end
   
   def get_player_count
