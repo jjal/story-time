@@ -16,7 +16,7 @@ class Story < ActiveRecord::Base
     storage: :dropbox,
     dropbox_credentials: "config/dropbox.yml",
     dropbox_options: { :path => proc { |style| "images/#{id}/#{style}/#{image.original_filename}" } }
-  
+  validates_format_of :image_url, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix  
   after_initialize :init
   
   
