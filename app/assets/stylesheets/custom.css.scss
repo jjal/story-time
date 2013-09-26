@@ -351,8 +351,10 @@ blockquote p {
 
 .thumb img {
   display: block;
-  width: 100%;
+  /*clip: rect(0px, 0px, 190px, 10px);
   border-radius: 100%;
+  */
+  width:100%;
   margin-bottom: 10px;
 }
 

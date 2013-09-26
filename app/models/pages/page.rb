@@ -5,9 +5,9 @@ class Page < ActiveRecord::Base
                                 :allow_destroy => true, 
                                 :reject_if => :all_blank
   belongs_to :story
-   after_initialize :init
+  after_initialize :init
 
-    
+  validates_format_of :image_url, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix  
 
   has_attached_file :image,
     styles: { 
