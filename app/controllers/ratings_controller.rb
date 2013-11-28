@@ -71,7 +71,7 @@ class RatingsController < ApplicationController
 
     respond_to do |format|
       if @rating.update_attributes(params[:rating])
-        format.json { head :no_content }
+        format.json { render json: @rating, status: :ok, location: nil }
       else
         format.json { render json: @rating.errors, status: :unprocessable_entity }
       end
