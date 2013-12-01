@@ -20,3 +20,8 @@
 Number.prototype.clamp = function(min, max) {
   return Math.min(Math.max(this, min), max);
 };
+
+function flash(el)
+{
+	el.fadeIn(500).delay(5000).fadeOut(1000);
+}

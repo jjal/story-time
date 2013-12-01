@@ -13,30 +13,14 @@
     <%= f.hidden_field :user_id %> 
     <%= f.hidden_field :story_id %>
   </div>
-  <%= button_tag "Rate", id: "ratingSubmit", class: "btn-square btn-orange btn-square-small " %>
-   <div id="ratingAlert" class="alert alert-success">Done!</div>
+  <%= f.submit "Rate", class: "btn-square btn-orange btn-square-small ratingSubmit" %>
+   <div id="ratingSuccess" class="alert alert-success ratingAlert">Saved!</div>
+   <div id="ratingError" class="alert alert-error ratingAlert">Uh.. some sort of problem happen</div>
   <script>
   $(document).ready(function() {
-    $("div#ratingAlert").hide();
-    $("button#ratingSubmit").click(function(){$("form#new_rating").submit();});
-    $("form#new_rating").submit(function(event) {  
-      var valuesToSubmit = $(this).serialize();
-      $(this).on('ajaxComplete', function(evt, data, status, xhr) {alert("haaaaaa");} );
-      $.ajax({
-        url: $(this).attr('action'),
-        data: valuesToSubmit,
-        method: $(this).attr('method'),
-        dataType: "jsonp",
-        success: flashsuccess,
-          error: flashsuccess,
-          complete: flashsuccess
-      }).done(flashsuccess)
-      .fail(flashsuccess)
-      .always(flashsuccess);
-      //event.preventDefault();
-    });
-    function flashsuccess() {
-      $("div#ratingAlert").fadeIn(500).delay(5000).fadeOut(1000);
-    } 
+    $("div.ratingAlert").hide();
+    $("form.rating").bind('ajax:success', function() { flash($("#ratingSuccess")); } );
+    $("form.rating").bind('ajax:error', function() { flash($("#ratingError")); } );
+ 
   });</script>
 <% end %>
