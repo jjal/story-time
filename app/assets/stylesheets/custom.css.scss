@@ -347,19 +347,25 @@ blockquote p {
   height: 62px;
   overflow: hidden;
   border: 6px solid #fff;
-  border-radius: 100%;
+  border-radius: 50%;
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-  /*margin: 5px;*/
+  background-color    : #fff;
+  background-repeat   : no-repeat;
+  background-position : 50% 50%;
+  /*background-size     : 100% auto;*/
+  background-size     : cover;
 }
 
-.thumb img {
+/*.thumb img {
   display: block;
-  /*clip: rect(0px, 0px, 190px, 10px);
+  clip: rect(0px, 0px, 190px, 10px);
   border-radius: 100%;
-  */
-  width:100%;
+  
+  width:62px;
+  height:62px;
   margin-bottom: 10px;
-}
+  
+}*/
 
 .btn-square {
   background-color: #fff;

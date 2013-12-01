@@ -9,7 +9,7 @@ module UsersHelper
   end
   
   def avatar_for(user, size=nil)
-    image_url = user.avatar.file? ? user.avatar.url((size.nil? || size > 100) ? :large : :medium) : "/assets/default_avatar.png"
+    image_url = avatar_file_for(user, size)
     if(user.id.nil?)
       image_tag(image_url, alt: user.name, width: size, class: "avatar")
     else 
@@ -17,6 +17,11 @@ module UsersHelper
         image_tag(image_url, alt: user.name, width: size, class: "avatar")
       end
     end
+  end
+
+  def avatar_file_for(user, size=nil)
+    image_url = user.avatar.file? ? user.avatar.url((size.nil? || size > 100) ? :large : :medium) : "/assets/default_avatar.png"
+    return image_url
   end
 
   def random_page_banner(user)

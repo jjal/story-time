@@ -16,9 +16,9 @@
   </div>
   <div class="story_right <%= !(hideAuthor||=nil).nil? ? "span6" : "span7" %>">
     <% if((hideAuthor||=nil).nil?) %>
-      <div class="thumb pull-right">
-        <%=avatar_for(story.user, 52)%>
-      </div>
+      <%=link_to story.user do %>
+        <%= render partial: "/users/avatar", locals: { user: story.user, size: 52 } %>
+      <% end %>
     <% end %>
     <h3><%= get_story_title(story) %></h3>
     <small><cite>By <%= story.user.nil? ? "Anonymous" : story.user.name %></cite></small>
