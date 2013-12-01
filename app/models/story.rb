@@ -81,7 +81,11 @@ class Story < ActiveRecord::Base
   end
   
   def get_winner_count
-    self.games.find(:all, conditions: {wins: true}).count
+    self.games.find(:all, conditions: {wins: 1}).count
+  end
+
+  def get_fail_count
+    self.games.sum(:fails)
   end
   
   def first_page

@@ -354,6 +354,9 @@ blockquote p {
   background-position : 50% 50%;
   /*background-size     : 100% auto;*/
   background-size     : cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
 }
 
 /*.thumb img {
@@ -527,6 +530,8 @@ blockquote p {
   line-height: 20px;
   vertical-align: top;
   margin-top: 1px;
+  margin-right:5px;
+  margin-left:5px;
 }
 .fb-like {
   top: auto;

@@ -11,6 +11,8 @@ class PagesController < ApplicationController
   end 
   
 	def show
+    game = @story.get_game_for_user(current_user)
+    game.visit_page(@page)
     render layout: false
 	end
 	
