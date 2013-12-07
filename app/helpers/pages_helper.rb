@@ -25,4 +25,18 @@ module PagesHelper
   		end
   	: page.message
   end
+
+  def can_retrieve_sound(audio_url)
+    client = SoundCloud.new(:client_id => '1a0be4cf7910f12cad37af2cd63e7ed0')
+
+    track = client.get('/resolve', :url => audio_url)
+    if(!track.nil?)
+      actual_track = client.get('/tracks', :id => id)
+      logger.debug actual_track
+      if(!actual_track.nil? and actual_track.any? { |t| t.streamable})
+        return true
+      end
+    end
+    return false
+  end
 end

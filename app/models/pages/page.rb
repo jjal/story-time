@@ -1,3 +1,5 @@
+include PagesHelper
+
 class Page < ActiveRecord::Base
   attr_accessible :end, :id, :image, :points, :story_id, :success, :text, :title, :links_attributes, :links, :image_url, :message, :type, :audio
   has_many :links, dependent: :destroy
@@ -8,7 +10,9 @@ class Page < ActiveRecord::Base
   after_initialize :init
 
   validates_format_of :image_url, :allow_blank => true, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix  
+  validate :audio_is_valid
 
+  
   has_attached_file :image,
     styles: { 
       medium: "200x200",
@@ -29,6 +33,14 @@ class Page < ActiveRecord::Base
     WIN => 'Win',
     ENDING => 'Other ending'
   }
+
+  def audio_is_valid
+    if (!audio.empty?)
+      if(!can_retrieve_sound audio)
+        errors.add(:audio, "That audio url won't work. Check that it's publically shared.")
+      end
+    end
+  end
 
   def image_safe(size=nil)
     image.file? ? image.url((size.nil? || size > 200) ? :large : :medium) : (image_url.blank? ? "/assets/placeholder.png" : image_url)

@@ -26,9 +26,20 @@
   </div>
   </div>
 </div>
+<div class="btn-round btn-round-small" id="btnMute"><i class='icon-volume-up'></i></div>
   <script>
     $(document).ready( function() {
       bookify($(".page_placeholder").get(0));
+    });
+    SCHelper.mute = false;
+    $("#btnMute").click(function ()
+    {
+      SCHelper.mute = !SCHelper.mute;
+      $(this).find("i").toggleClass( "icon-volume-off icon-volume-up");
+      if(SCHelper.mute)
+        SCHelper.pause();
+      else
+        SCHelper.play();
     });
   </script>
 </div>
