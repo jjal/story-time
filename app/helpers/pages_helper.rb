@@ -27,6 +27,9 @@ module PagesHelper
   end
 
   def can_retrieve_sound(audio_url)
+    if(audio_url.empty?)
+      return true
+    end
     client = SoundCloud.new(:client_id => '1a0be4cf7910f12cad37af2cd63e7ed0')
 
     track = client.get('/resolve', :url => audio_url)
