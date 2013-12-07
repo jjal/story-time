@@ -54,6 +54,7 @@
 
 ;(function( $ ){
 	
+	
 	var $scrollTo = $.scrollTo = function( target, duration, settings ){
 		$(window).scrollTo( target, duration, settings );
 	};

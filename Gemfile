@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
 gem 'nokogiri', '1.5.9'
@@ -15,6 +15,7 @@ gem 'font-awesome-sass-rails'
 gem 'newrelic_rpm'
 gem 'merit'
 gem "wice_grid", '3.2.1'
+gem "soundcloud"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

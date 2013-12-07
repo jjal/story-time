@@ -8,8 +8,10 @@
 <%= f.file_field :image %>
 <br/> - or -
 <%= f.label :image_url %>
-<%= f.text_field :image_url, placeholder: "URL to your image" %>
+<%= f.text_field :image_url, placeholder: "URL of your image" %>
 </div>
+<%= f.label :audio %>
+<%= f.text_field :audio, placeholder: "URL of this page's audio" %>
 <%= f.label :text %>
 <%= f.text_area :text %>
 

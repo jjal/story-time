@@ -1,0 +1,10 @@
+<script>
+$(document).ready(function() {
+	var sound = '<%= page.audio %>';
+	if(sound != '')
+	{
+		SCHelper.stopAll();
+		SCHelper.play(sound);
+	}
+});
+</script>

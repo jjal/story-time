@@ -20,20 +20,8 @@
     </div>
   </div>
   <div class="row">
-  <% if(@page.is_a?(EndPage)) %>
-    <h1>The End</h1>
-    <h1><%= end_message_for(@page) %></h1>
-    <% if(@page.is_a?(WinPage)) %>
-      <div class="pull-left well well-small rating-well">
-      <% if(signed_in?) %>
-        <h2>Rate this story</h2>
-          <%= render @story.user_rating(current_user)%>
-        </div>
-      <% end %>
-    <% end %>
-    <h1><small><%= link_to "Begin again", story_path(@story) %></small><br/>
-    <small><%= link_to "Story list", stories_path %></small></h1>
-  <% end %>
+  <%= render partial: "end_widget", locals: {page: @page} %>
+  <%= render partial: "audio", locals: {page: @page} %>
   </div>
   <div class="pull-right">
   <% if (signed_in? and user_can_edit(@story)) %>
