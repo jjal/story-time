@@ -2,22 +2,22 @@
   <div class="tab-content">
     <div class="tab-pane active" id="tab-stats<%= story.id %>">
       <ul class="thumbnails">
-        <li><a href="#" rel="tooltip" data-original-title="Pages" class="atooltip"><i class="icon-file"></i> <%= story.pages.count %></a>
+        <li><a href="#" rel="tooltip" data-original-title="Pages" class="atooltip"><i class="fa fa-file"></i> <%= story.pages.count %></a>
         </li>
-        <li><a href="#" rel="tooltip" data-original-title="Words" class="atooltip"><i class="icon-file-alt" alt="words"></i> <%= story.get_word_count %></a>
+        <li><a href="#" rel="tooltip" data-original-title="Words" class="atooltip"><i class="fa fa-file-o" alt="words"></i> <%= story.get_word_count %></a>
         </li>
-        <li><a href="#" rel="tooltip" data-original-title="Plays" class="atooltip"><i class="icon-group" alt="plays"></i> <%= story.get_player_count %></a>
+        <li><a href="#" rel="tooltip" data-original-title="Plays" class="atooltip"><i class="fa fa-group" alt="plays"></i> <%= story.get_player_count %></a>
         </li>
-        <li><a href="#" rel="tooltip" data-original-title="Won" class="atooltip"><i class="icon-trophy" alt="won"></i> <%= story.get_winner_count %></a>
+        <li><a href="#" rel="tooltip" data-original-title="Won" class="atooltip"><i class="fa fa-trophy" alt="won"></i> <%= story.get_winner_count %></a>
         </li>
-        <li><a href="#" rel="tooltip" data-original-title="Median rating" class="atooltip"><i class="icon-star" alt="med_rating">
+        <li><a href="#" rel="tooltip" data-original-title="Median rating" class="atooltip"><i class="fa fa-star" alt="med_rating">
         </i> 
           <%= number_with_precision story.get_median_rating, precision: 1 %></a>
         </li>
-        <li><a href="#" rel="tooltip" data-original-title="Standard deviation" class="atooltip"><i class="icon-bar-chart" alt="standard_deviation"></i> 
+        <li><a href="#" rel="tooltip" data-original-title="Standard deviation" class="atooltip"><i class="fa fa-bar-chart-o" alt="standard_deviation"></i> 
           <%= number_with_precision story.rating_deviation, precision: 1 %></a>
         </li>
-        <li><a href="#" rel="tooltip" data-original-title="Popularity" class="atooltip"><i class="icon-fire" alt="popularity"></i> 
+        <li><a href="#" rel="tooltip" data-original-title="Popularity" class="atooltip"><i class="fa fa-fire" alt="popularity"></i> 
           <%= number_with_precision story.decayed_weighted_score, precision: 1 %></a>
         </li>
       </ul>
@@ -36,7 +36,7 @@
     </div>
   </div>
   <ul class="nav nav-tabs">
-    <li class="active"><a href="#tab-stats<%= story.id %>" data-toggle="tab"><i class="icon-cogs"></i> Stats</a></li>
-    <li><a href="#tab-comments<%= story.id %>" data-toggle="tab"><i class="icon-comments"></i> Comments</a></li>
+    <li class="active"><a href="#tab-stats<%= story.id %>" data-toggle="tab"><i class="fa fa-cogs"></i> Stats</a></li>
+    <li><a href="#tab-comments<%= story.id %>" data-toggle="tab"><i class="fa fa-comments"></i> Comments</a></li>
   </ul>
 </div>

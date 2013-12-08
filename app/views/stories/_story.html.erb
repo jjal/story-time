@@ -5,12 +5,12 @@
       <%= image_for_story story, 100 %>
     </div>
     <div class="story_button">
-      <%= link_to story_path(story) do %><div class="btn-round btn-green"><i class='icon-play icon-large'></i></div><% end %>
+      <%= link_to story_path(story) do %><div class="btn-round btn-green"><i class='fa fa-play fa fa-large'></i></div><% end %>
       <% if signed_in? and user_can_edit(story) %>
-        <%= link_to edit_story_path(story) do %><div class="btn-round btn-yellow btn-round-small"><i class='icon-edit'></i></div><% end %>
+        <%= link_to edit_story_path(story) do %><div class="btn-round btn-yellow btn-round-small"><i class='fa fa-edit'></i></div><% end %>
       <% end %>
       <% if signed_in? and current_user.admin? %>
-        <%= link_to story_path(story), method: :delete do %><div class="btn-round btn-red btn-round-small"><i class='icon-trash'></i></div><% end %>
+        <%= link_to story_path(story), method: :delete do %><div class="btn-round btn-red btn-round-small"><i class='fa fa-trash-o'></i></div><% end %>
       <% end %>
     </div>
   </div>

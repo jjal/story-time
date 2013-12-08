@@ -26,7 +26,7 @@
   </div>
   </div>
 </div>
-<div class="btn-round btn-round-small" id="btnMute"><i class='icon-volume-up'></i></div>
+<div class="btn-round btn-round-small" id="btnMute"><i class='fa fa-volume-up'></i></div>
   <script>
     $(document).ready( function() {
       bookify($(".page_placeholder").get(0));
@@ -35,7 +35,7 @@
     $("#btnMute").click(function ()
     {
       SCHelper.mute = !SCHelper.mute;
-      $(this).find("i").toggleClass( "icon-volume-off icon-volume-up");
+      $(this).find("i").toggleClass( "fa fa-volume-off fa fa-volume-up");
       if(SCHelper.mute)
         SCHelper.pause();
       else

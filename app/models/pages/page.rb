@@ -35,7 +35,7 @@ class Page < ActiveRecord::Base
   }
 
   def audio_is_valid
-    if (!audio.empty?)
+    if (!audio.blank?)
       if(!can_retrieve_sound audio)
         errors.add(:audio, "That audio url won't work. Check that it's publically shared.")
       end

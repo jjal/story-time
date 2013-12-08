@@ -6,7 +6,7 @@
       <div class="control-group controls form-inline link-row">
       <section>
         <% if links_form.object.other_page_id %>
-          <%= link_to edit_story_page_path(@story.id,links_form.object.other_page_id) do %> <%= image_tag "/assets/jump_to.png" %><% end %>
+          <%= link_to edit_story_page_path(@story.id,links_form.object.other_page_id) do %> <i class="fa fa-external-link-square"></i><% end %>
         <% end %>
         <%= links_form.text_field :text, class: "input-medium", placeholder: "Link Text" %>
         <%= links_form.label :other_page_id, class: "control-label" %>

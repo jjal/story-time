@@ -25,7 +25,7 @@
   </div>
   <div class="pull-right">
   <% if (signed_in? and user_can_edit(@story)) %>
-    <%= link_to edit_story_page_path(@story,@page) do %><div class="btn-round btn-yellow btn-round-small"><i class='icon-edit'></i></div><% end %>
+    <%= link_to edit_story_page_path(@story,@page) do %><div class="btn-round btn-yellow btn-round-small"><i class='fa fa-edit'></i></div><% end %>
   <% end %>
   </div>
 </div>

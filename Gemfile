@@ -11,7 +11,7 @@ gem 'paperclip'
 gem "paperclip-dropbox", ">= 1"
 gem 'aws-s3'
 gem "nested_form", :git => 'git://github.com/ryanb/nested_form.git'
-gem 'font-awesome-sass-rails'
+gem 'font-awesome-rails'
 gem 'newrelic_rpm'
 gem 'merit'
 gem "wice_grid", '3.2.1'
