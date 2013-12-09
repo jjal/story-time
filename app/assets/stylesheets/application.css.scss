@@ -8,7 +8,22 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require bootstrap
- *= require font-awesome
- *= require_tree .
+ * require bootstrap
+ * require font-awesome
+ * require_tree .
  */
+ @import 'bootstrap';
+ @import 'font-awesome';
+ @import 'custom';
+ @import 'badges';
+ @import 'microposts';
+ @import 'pages';
+ @import 'ratings';
+ @import 'sessions';
+ @import 'static_pages';
+ @import 'stories';
+ @import 'users';
+ @import 'wice_grid';
+ @import 'jit/base';
+ @import 'jit/ForceDirected';
+ 

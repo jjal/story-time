@@ -1,6 +1,6 @@
 ;
 var SCHelper = {
-	sounds: [],
+	tracks: [],
 	mute: false,
 	play: function(url)
 	{
@@ -8,32 +8,59 @@ var SCHelper = {
 		if(url) {
 			SC.get('/resolve', { url: url }, function(track) {
 				
-				SC.stream('/tracks/'+track.id, function(sound){
-					SCHelper.sounds.push(sound);
+				SC.stream('/tracks/'+track.id, function(sound) {
+					//set fade out
+					//sound.onPosition(track.duration - 2000, function () { SCHelper.fadeOut(sound); });
+					track.sound = sound;
+					SCHelper.tracks.push(track);
 					if(!SCHelper.mute)
-						sound.play();
+						SCHelper._play(track);
 		  		});
 			});	
 		} else {
-			for(var i = 0; i < SCHelper.sounds.length; i++)
+			for(var i = 0; i < SCHelper.tracks.length; i++)
 			{
 				if(!SCHelper.mute)
-					SCHelper.sounds[i].play();
+					SHelper._play(SCHelper.tracks[i]);
 			}
 		}
 	},
+	_play : function(track)
+	{
+		track.sound.play({
+				onfinish: function () { this.play() },
+				onplay: function () { SCHelper.fadeIn(this); }
+			});
+	},
+	fadeIn: function (sound) {
+		sound.setVolume(0);
+		var fadeInTimer = setInterval(function() 
+			{ 
+				sound.setVolume(sound.volume + 1); 
+				if(sound.volume >= 100) clearInterval (fadeInTimer); 
+			}, 50);
+	},
+
+	fadeOut: function (sound) {
+		var fadeOutTimer = setInterval(function() 
+			{ 
+				sound.setVolume(sound.volume - 1); 
+				if(sound.volume <= 0) { clearInterval (fadeOutTimer); sound.stop(); }
+			}, 50);
+	},
 	stopAll: function()
 	{
-		for(var i = 0; i < SCHelper.sounds.length; i++)
+		for(var i = 0; i < SCHelper.tracks.length; i++)
 		{
-			SCHelper.sounds[i].stop();
+			SCHelper.fadeOut(SCHelper.tracks[i].sound);
+			//SCHelper.tracks[i].sound.stop();
 		}
-		SCHelper.sounds = [];
+		SCHelper.tracks = [];
 	},
 	pause: function() {
-		for(var i = 0; i < SCHelper.sounds.length; i++)
+		for(var i = 0; i < SCHelper.tracks.length; i++)
 		{
-			SCHelper.sounds[i].pause();
+			SCHelper.tracks[i].sound.pause();
 		}
 	}
 };
