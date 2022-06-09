@@ -3,7 +3,7 @@
 	<ul class="nav nav-pills">
 	<% ["Rating","Title","Date"].each do |p| %>
 		<li class="<%=p.casecmp(params[:sort]) == 0 ? "active" : "" %>">
-			<%= link_to p, params.merge({:sort => p.downcase}) %>
+			<%= link_to p, params.permit(:sort).merge({:sort => p.downcase}) %>
 		</li>
 	<% end %>
 	</ul>

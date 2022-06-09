@@ -1,5 +1,5 @@
 class ReportsController < ApplicationController
-	before_filter :admin_user
+	before_action :admin_user
 
 	def recent_activity
 		@activity= initialize_grid(Page,

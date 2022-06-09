@@ -1,8 +1,9 @@
+# https://github.com/thoughtbot/paperclip/blob/master/MIGRATING.md
 require "core_ext/array.rb"
 class Story < ActiveRecord::Base
   include StoriesHelper
   
-  attr_accessible :id, :image, :title, :user_id, :description, :image_file_name, :image_content_type, :image_file_size, :image_updated_at, :image_url, :status
+  
   has_many :pages
   has_many :ratings
   has_many :games
@@ -16,7 +17,7 @@ class Story < ActiveRecord::Base
     storage: :dropbox,
     dropbox_credentials: "config/dropbox.yml",
     dropbox_options: { :path => proc { |style| "images/#{id}/#{style}/#{image.original_filename}" } }
-  validates_format_of :image_url, :allow_blank => true, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix  
+  validates_format_of :image_url, :allow_blank => true, :with => /(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/ix  
   after_initialize :init
   
   

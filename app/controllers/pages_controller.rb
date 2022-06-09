@@ -1,8 +1,8 @@
 class PagesController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update, :new, :create]
-  before_filter :correct_user,   only: [:destroy, :edit, :update]
-  before_filter :correct_story, only: [:destroy, :edit, :update, :show]
-  before_filter :create_new_link_pages, only: [:update, :create]
+  before_action :signed_in_user, only: [:edit, :update, :new, :create]
+  before_action :correct_user,   only: [:destroy, :edit, :update]
+  before_action :correct_story, only: [:destroy, :edit, :update, :show]
+  before_action :create_new_link_pages, only: [:update, :create]
 
   include StoriesHelper
   def index

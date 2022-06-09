@@ -2,11 +2,11 @@ require 'will_paginate/array'
 require 'core_ext/array'
 
 class StoriesController < ApplicationController
-  before_filter :signed_in_user, only: [:edit, :update, :new, :create, :graph, :destroy]
-  before_filter :correct_user,   only: [:destroy, :edit, :update]
+  before_action :signed_in_user, only: [:edit, :update, :new, :create, :graph, :destroy]
+  before_action :correct_user,   only: [:destroy, :edit, :update]
   
   def index
-    @stories = Story.find(:all, conditions: 
+    @stories = Story.where(
       signed_in? ? 
         (current_user.admin?) ? {} : ["status = 1 or user_id = ?", current_user.id]
       :

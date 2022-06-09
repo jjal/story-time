@@ -60,6 +60,7 @@ StoryTime::Application.configure do
 
   # Send deprecation notices to registered listeners
 
+  config.eager_load = true
   
   config.active_support.deprecation = :notify
 

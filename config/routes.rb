@@ -19,21 +19,21 @@ StoryTime::Application.routes.draw do
     resources :start_pages, :controller => 'pages'
     resources :ratings
   end
-  match '/stories/:story_id#:id', to: 'story#show', as: 'present_story_page'
+  match '/stories/:story_id#:id', to: 'story#show', :via => [:get], as: 'present_story_page'
   
-  match '/reports/activity', to: 'reports#recent_activity'
+  match '/reports/activity', to: 'reports#recent_activity', :via => [:get]
 
 
   root to: 'stories#index'
 	
-	match '/', to: 'stories#index'
-  match '/help',    to: 'static_pages#help'
-  match '/about',   to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'
+	match '/', to: 'stories#index', :via => [:get]
+  match '/help',    to: 'static_pages#help', :via => [:get]
+  match '/about',   to: 'static_pages#about', :via => [:get]
+  match '/contact', to: 'static_pages#contact', :via => [:get]
 
-	match '/signup',  to: 'users#new'
-  match '/signin',  to: 'sessions#new'
-  match '/signout', to: 'sessions#destroy', via: :delete
+	match '/signup',  to: 'users#new', :via => [:get]
+  match '/signin',  to: 'sessions#new', :via => [:get]
+  match '/signout', to: 'sessions#destroy', :via => [:delete]
 	
 	
 

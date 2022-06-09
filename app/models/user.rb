@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   has_merit
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-	attr_accessible(:email, :name, :password, :password_confirmation, :avatar) 
 	
 	has_secure_password
 	has_many :microposts, dependent: :destroy

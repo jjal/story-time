@@ -1,0 +1,13 @@
+# JL 2012-11-14
+# Scan through App_Themes/*/*.css and remove any styles which are already defined the same in Content/Style.css
+# usage: > ruby remove_dup_styles.rb
+
+File.read("C:\\coding\\story_time\\public\\assets\\application-86f374b060cfaf75ab5f4ecd2de4c462.css").scan(/^(\.?[a-zA-Z0-9\-]+[^}]+})/) do  |c|
+	file = "C:\\coding\\story-time\\public\\assets\\application-30051f819179011059423c682961b792.css"
+    file_contents = File.read(file)
+    if(file_contents.include?(c[0]))
+      puts "Removing #{c[0][/([^{]+)/].gsub(/\n/,"")} from #{file}\n"
+      data = file_contents.gsub(c[0], "")
+      File.open(file, "w") { |f| f.write(data) }
+  end
+end

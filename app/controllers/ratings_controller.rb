@@ -1,5 +1,5 @@
 class RatingsController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy]
+  before_action :signed_in_user, only: [:create, :destroy]
   
   # GET /ratings
   # GET /ratings.json
