@@ -17,7 +17,7 @@
    
     <div style="text-align:center">
     <% if !@story.first_page.nil? %>
-          <%= link_to "Begin Story", story_page_path(@story,@story.first_page), class:"btn-square btn-green" %>
+          <%= link_to "Begin Story", story_page_path(@story, @story.first_page), class:"btn-square btn-green" %>
     <% else %>
           No pages yet!
     <% end %>

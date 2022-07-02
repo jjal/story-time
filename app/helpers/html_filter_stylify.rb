@@ -1,4 +1,4 @@
- class HTMLFilter_Stylify < HTMLFilter
+ class HtmlFilterStylify < HtmlFilter
 	def process(text)
     	return text.gsub(/\n?([^\n]+)(?:\n|$)/, '<p>\1</p>')
 		    .gsub(/_([^_]+)_/,'<em>\1</em>') #italics

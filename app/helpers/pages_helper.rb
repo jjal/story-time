@@ -1,3 +1,7 @@
+require 'html_filter'
+require 'html_filter_stylify'
+require 'html_filter_youtube'
+
 module PagesHelper
   def image_for_page(page, size=nil)
     image_url = page.image.file? ? (page.image.url( (size.nil? || size > 100) ? :large : :medium)) : (page.image_url.blank? ? nil : page.image_url)
@@ -5,11 +9,10 @@ module PagesHelper
   end
 
   def content_filter(text)
-    filters = ["Stylify", "Youtube"]
-    filters.each do |f|
-      filter = Object.const_get("HTMLFilter_"+f).new
-      text = filter.process(text)
-    end
+    filter = HtmlFilterStylify.new
+    text = filter.process(text)
+    filter = HtmlFilterYoutube.new
+    text = filter.process(text)    
     return text
   end
 

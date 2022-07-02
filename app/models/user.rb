@@ -37,14 +37,7 @@ class User < ActiveRecord::Base
 	validates(:password, presence: true, length: { minimum: 6 })
 	validates(:password_confirmation, presence: true)
 	
-  has_attached_file :avatar,
-    styles: { 
-      medium: "200x200",
-      large: "600x400"
-    },
-    storage: :dropbox,
-    dropbox_credentials: "config/dropbox.yml",
-    dropbox_options: { :path => proc { |style| "user_images/#{id}/#{style}/#{avatar.original_filename}" } }
+  has_one_attached :avatar
     
 	def feed
     Micropost.where("user_id = ?", id)

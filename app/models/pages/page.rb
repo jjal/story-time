@@ -9,18 +9,13 @@ class Page < ActiveRecord::Base
   belongs_to :story
   after_initialize :init
 
-  validates_format_of :image_url, :allow_blank => true, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix  
   validate :audio_is_valid
-
   
-  has_attached_file :image,
-    styles: { 
-      medium: "200x200",
-      large: "600x400"
-    },
-    storage: :dropbox,
-    dropbox_credentials: "config/dropbox.yml",
-    dropbox_options: { :path => proc { |style| "page_images/#{id}/#{style}/#{image.original_filename}" } }
+  has_one_attached :image
+  validates :image, file_content_type: {
+    allow: ["image/jpeg", "image/png"],
+    if: -> { image.attached? },
+  }
 
   NORMAL = :NormalPage
   ENDING = :EndPage

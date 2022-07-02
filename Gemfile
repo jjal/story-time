@@ -3,12 +3,10 @@ ruby '3.1.2'
 gem 'rails', '7.0.3'
 gem 'nokogiri'
 gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate'
 gem 'bcrypt-ruby'
 gem 'faker'
 gem 'will_paginate'
-gem 'bootstrap-will_paginate'
-gem 'paperclip'
-gem "paperclip-dropbox"
 gem "nested_form"
 gem 'font-awesome-rails'
 gem 'newrelic_rpm'
@@ -17,6 +15,9 @@ gem 'merit'
 gem 'font-awesome-sass',  '~> 4.3'
 gem 'mini_magick'
 gem "aws-sdk-s3", require: false
+gem 'file_validators'
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
 # gem "soundcloud"
 
 # Bundle edge Rails instead:
@@ -57,7 +58,7 @@ group :assets do
   gem 'uglifier'
 end
 
-#gem 'jquery-rails', '~> 2.3.0'
+
 
 
 

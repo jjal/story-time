@@ -9,15 +9,11 @@ class Story < ActiveRecord::Base
   has_many :games
   has_many :players, through: :games
   belongs_to :user
-  has_attached_file :image,
-    styles: { 
-      medium: "200x200",
-      large: "600x400"
-    },
-    storage: :dropbox,
-    dropbox_credentials: "config/dropbox.yml",
-    dropbox_options: { :path => proc { |style| "images/#{id}/#{style}/#{image.original_filename}" } }
-  validates_format_of :image_url, :allow_blank => true, :with => /(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?/ix  
+  has_one_attached :image
+  validates :image, file_content_type: {
+    allow: ["image/jpeg", "image/png"],
+    if: -> { image.attached? },
+  }
   after_initialize :init
   
   
@@ -82,7 +78,8 @@ class Story < ActiveRecord::Base
   end
   
   def get_winner_count
-    self.games.find(:all, conditions: {wins: 1}).count
+    
+    self.games.where(["wins = 1"]).count
   end
 
   def get_fail_count
@@ -90,9 +87,9 @@ class Story < ActiveRecord::Base
   end
   
   def first_page
-    p = self.pages.find(:first, conditions: {type: 'StartPage'})
+    p = self.pages.where(["type='StartPage'"]).first
     if(p.nil?)
-      p = self.pages.find(:first, order: "id")
+      p = self.pages.order("id").first
     end
     return p
   end

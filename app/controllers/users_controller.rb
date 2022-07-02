@@ -4,21 +4,25 @@ class UsersController < ApplicationController
 	before_action :correct_user,   only: [:edit, :update]
 	before_action :admin_user,     only: :destroy
 	
+	def users_params
+		params.permit(:page, { user: [:name, :email, :password, :password_confirmation]}, :id, :utf8, :authenticity_token, :commit)
+  end
+
 	def index
-		@users = User.paginate(page: params[:page], order: :name)
+		@users = User.paginate(page: users_params[:page]).order("name")
 	end
 	
 	def show
-		@user = User.find(params[:id])
-		@microposts = @user.microposts.paginate(page: params[:page])
+		@user = User.find(users_params[:id])
+		@microposts = @user.microposts.paginate(page: users_params[:page])
 		@stories = (signed_in? and (current_user?(@user) or current_user.admin?)) ? 
 			@user.stories : 
-			@user.stories.find(:all, conditions: {status: Story::PUBLISHED})
+			@user.stories.where(["status= ?",Story::PUBLISHED])
 	end
 
 	def edit
 		#defined in correct_user
-    #@user = User.find(params[:id])
+    #@user = User.find(users_params[:id])
   	end
 	
 	def new
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
 	def create
 		#hack to force session load
 		session["init"] = true
-    	@user = User.new(params[:user])
+    	@user = User.new(users_params[:user])
     	if @user.save
 			sign_in @user
       		flash[:success] = "Welcome to Story Time! "
@@ -40,8 +44,8 @@ class UsersController < ApplicationController
 	
 	def update
     #defined in correct user
-		#@user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
+		#@user = User.find(users_params[:id])
+    if @user.update_attributes(users_params[:user])
 			flash[:success] = "Profile updated"
 			sign_in @user
       redirect_to @user
@@ -51,7 +55,7 @@ class UsersController < ApplicationController
   end
 	 
 	def destroy
-    User.find(params[:id]).destroy
+    User.find(users_params[:id]).destroy
     flash[:success] = "User destroyed."
     redirect_to users_url
   end
@@ -59,7 +63,7 @@ class UsersController < ApplicationController
 	private
 		
 	def correct_user
-      @user = User.find(params[:id])
+      @user = User.find(users_params[:id])
       redirect_to(root_path) unless current_user?(@user)
     end
 		

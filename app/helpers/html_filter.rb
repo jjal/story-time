@@ -1,4 +1,4 @@
-class HTMLFilter
+class HtmlFilter
 	def process(text)
 		text
 	end

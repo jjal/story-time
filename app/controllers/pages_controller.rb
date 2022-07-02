@@ -5,9 +5,14 @@ class PagesController < ApplicationController
   before_action :create_new_link_pages, only: [:update, :create]
 
   include StoriesHelper
+
+  def pages_params
+      params.permit(:story_id, :page, :id)
+  end
+
   def index
-    @story = Story.find(params[:story_id])
-    @pages = @story.pages.paginate(page: params[:page])
+    @story = Story.find(pages_params[:story_id])
+    @pages = @story.pages.paginate(page: pages_params[:page])
   end 
   
 	def show
@@ -21,13 +26,13 @@ class PagesController < ApplicationController
   end
 	
 	def new
-    @story = Story.find(params[:story_id])
+    @story = Story.find(pages_params[:story_id])
 		@page = @story.pages.build
   end
 	
 	def create
-    @story = Story.find_by_id(params[:story_id])
-		@page = @story.pages.build(params[:page])
+    @story = Story.find_by_id(pages_params[:story_id])
+		@page = @story.pages.build(pages_params[:page])
     if(@story.pages.count == 0)
       @page.type = 'StartPage'
     end
@@ -44,7 +49,7 @@ class PagesController < ApplicationController
 
   
 	def update
-    if @page.update_attributes(params[:page])
+    if @page.update_attributes(pages_params[:page])
       #logger.debug "************pages merit************************"
       #logger.debug @page.story.user.stories.collect{ |s| s.get_word_count }.sum
 			flash[:success] = "Page updated"
@@ -63,8 +68,8 @@ class PagesController < ApplicationController
   private
     
     def correct_story 
-      @story = Story.find_by_id(params[:story_id])
-      @page = @story.pages.find_by_id(params[:id])
+      @story = Story.find_by_id(pages_params[:story_id])
+      @page = @story.pages.find_by_id(pages_params[:id])
       if(@page.nil?)
         flash[:error] = "That page doesn't exist in this story"
         redirect_to story_url(@story)
@@ -72,7 +77,7 @@ class PagesController < ApplicationController
     end
     
     def correct_user
-      story = current_user.stories.select { |s| !s.pages.find_by_id(params[:id]).nil? }
+      story = current_user.stories.select { |s| !s.pages.find_by_id(pages_params[:id]).nil? }
       if(story.empty? and !current_user.admin?)
         flash[:error] = "You need to be the owner of that page to modify it."
         redirect_to root_url if story.empty?
@@ -80,18 +85,18 @@ class PagesController < ApplicationController
     end
 
     def create_new_link_pages
-      return unless params[:page].has_key? :links_attributes
+      return unless pages_params[:page].has_key? :links_attributes
 
-      params[:page][:links_attributes].each do |key, link| 
+      pages_params[:page][:links_attributes].each do |key, link| 
         if(link[:other_page_id].empty? and link[:_destroy] != "1")
           p = create_new_page_from_link(link)
-          params[:page][:links_attributes][key][:other_page_id] = p.id
+          pages_params[:page][:links_attributes][key][:other_page_id] = p.id
         end
       end
     end
 
     def create_new_page_from_link(link)
-      @story = Story.find_by_id(params[:story_id])
+      @story = Story.find_by_id(pages_params[:story_id])
       page = @story.pages.build(title: link[:text])
       page.save!
       return page

@@ -20,8 +20,6 @@ html {
   overflow-y: scroll;
 }
 
-
-
 body {
   font-family: proxima-nova,"Helvetica Neue",Helvetica,Arial,sans-serif;
   padding-top: 60px;
@@ -269,8 +267,8 @@ input, textarea, select, .uneditable-input {
 }
 
 .field_with_errors {
-  @extend .control-group;
-  @extend .error;
+  @extend .control-group !optional;
+  @extend .error !optional;
  }
 
 

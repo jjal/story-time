@@ -14,7 +14,7 @@
       </div>
       <hr />
       <div class="story_count"><div class="btn-round btn-black btn-round-small pull-left"><%=@user.stories.count%></div>Stories</div>
-      <div class="recent_activity"><small>Most recent activity<br/><cite><%=raw @user.microposts.first(order: "id DESC").try(:content)%></cite></small></div>
+      <div class="recent_activity"><small>Most recent activity<br/><cite><%=raw @user.microposts.order("id DESC").first.try(:content)%></cite></small></div>
       <div class="sash span3">
       <%= render partial: 'sash', locals: { badges: @user.badges } %>
       </div>
