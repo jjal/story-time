@@ -9,13 +9,14 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'paperclip'
 gem "paperclip-dropbox"
-gem 'aws-sdk-s3'
 gem "nested_form"
 gem 'font-awesome-rails'
 gem 'newrelic_rpm'
 gem 'merit'
-gem "wice_grid"
+#gem "wice_grid"
 gem 'font-awesome-sass',  '~> 4.3'
+gem 'mini_magick'
+gem "aws-sdk-s3", require: false
 # gem "soundcloud"
 
 # Bundle edge Rails instead:

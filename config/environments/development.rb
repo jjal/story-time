@@ -34,4 +34,7 @@ StoryTime::Application.configure do
   config.eager_load = false
 
   # Paperclip.options[:command_path] = "C:\coding\ImageMagick"
+
+  # Store files locally.
+  config.active_storage.service = :local
 end
